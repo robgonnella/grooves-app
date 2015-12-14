@@ -18,7 +18,6 @@ module.exports = function(app, errorHandler) {
       var token = jwt.sign(
         {
           email: req.user.email,
-          name:  req.user.name,
           use:   'public_api'
         },
         app.get('secret-key'),

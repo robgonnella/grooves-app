@@ -10,14 +10,12 @@ module.exports = function(app, errorHandler) {
     // validations
     checkUserFields,
     checkPassword,
-    checkDob,
     checkUserExists,
 
     // create new user
     function(req, res, next) {
       User.create({
         email:    req.body.email,
-        name:     req.body.name,
         password: req.body.password,
         dob:      Date.parse(req.body.dob)
       }).then(function(newUser) {
@@ -39,9 +37,7 @@ module.exports = function(app, errorHandler) {
   function checkUserFields(req, res, next) {
     if (
       !req.body.email    ||
-      !req.body.name     ||
-      !req.body.password ||
-      !req.body.dob
+      !req.body.password
     ) {
       errorHandler(
         422,
@@ -65,40 +61,6 @@ module.exports = function(app, errorHandler) {
     }
   }
 
-  function checkDob(req, res, next) {
-    var date = moment(req.body.dob, moment.ISO_8601);
-    var eighteen_years_ago =
-      moment().subtract(18, 'years').startOf('day');
-
-    var valid = date.isValid();
-    var flags = date.parsingFlags();
-
-    // eval(locus)
-    if (!valid && !flags.iso) {
-      errorHandler(
-        422,
-        'dob invalid format: not in ISO 8601. ' +
-        'See https://en.wikipedia.org/wiki/ISO_8601#Dates.',
-        req, res
-      );
-    } else
-    if (!valid && (flags.overflow !== -1)) {
-      errorHandler(
-        422,
-        'dob invalid date part: year, month, or date.',
-        req, res
-      );
-    } else
-    if (date.isAfter(eighteen_years_ago)) {
-      errorHandler(
-        422,
-        'dob invalid: you must be 18 to enter.',
-        req, res
-      );
-    } else {
-      next();
-    }
-  }
 
   function checkUserExists(req, res, next) {
     User.find({email: req.body.email}).exec()

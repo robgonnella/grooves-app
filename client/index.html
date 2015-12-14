@@ -1,10 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Grooves!</title>
+  <meta charset="utf-8">
+
+  <title>Ng Auth Lab</title>
+  <meta name="description" content="An introduction to token-based auth.">
+
+  <link rel="stylesheet" type="text/css" href="//yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <style type="text/css">
+    .center {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .container {
+      min-width: 400px;
+    }
+
+    .pure-button {
+      border-radius: 4px;
+    }
+
+    .pure-group {
+      display: inline-block;
+    }
+  </style>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 </head>
-<body>
-  <h1> Welcome to Grooves! </h1>
+<body ng-app="app">
+  <div class="container center" ng-controller="MainController as vm">
+    <header>
+      <h1>Create a User, Get a Token, Authenticate a Request</h1>
+    </header>
+    <main>
+      <h4>Create User Below</h4>
+      {{vm.user}}
+      <form id="user" class="pure-form center" ng-submit="vm.createUser()">
+        <fieldset class="pure-group center">
+          <input type="email"    ng-model="vm.user.email"    class="email" placeholder="user@domain.com">
+          <input type="text"     ng-model="vm.user.name"     class="name" placeholder="Terry Winters">
+          <input type="password" ng-model="vm.user.password" class="password" placeholder="secretpassword">
+          <input type="date"     ng-model="vm.user.dob"      class="dob" placeholder="">
+          <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </fieldset>
+      </form>
+
+      <h4>Log In User</h4>
+      <form id="token" class="pure-form center" ng-submit="vm.logInUser()">
+        <fieldset class="pure-group center">
+          <input type="email"    ng-model="vm.auth.email"     ng-disabled="vm.auth.isLoggedIn" class="email" placeholder="user@domain.com">
+          <input type="password" ng-model="vm.auth.password"  ng-disabled="vm.auth.isLoggedIn" class="password" placeholder="secretpassword">
+          <button type="submit"  ng-hide="vm.auth.isLoggedIn"                                  class="pure-button pure-button-primary">Submit</button>
+          <button type="button"  ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut()"      class="pure-button pure-button-primary">Log Out</button>
+        </fieldset>
+      </form>
+
+      <pre id="success">{{ vm.successMessage }}</pre>
+      <pre id="failure">{{ vm.failureMessage }}</pre>
+    </main>
+  </div> <!-- div.container -->
+
+  <script src="/js/app/angular.module.js"></script>
+  <script src="/js/app/angular.config.js"></script>
+  <script src="/js/app/token.service.js"></script>
+  <script src="/js/app/tokenSigning.service.js"></script>
+  <script src="/js/app/auth.service.js"></script>
+  <script src="/js/app/user.dataservice.js"></script>
+  <script src="/js/app/main.controller.js"></script>
 </body>
 </html>
+
