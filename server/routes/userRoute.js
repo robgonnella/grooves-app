@@ -1,10 +1,13 @@
 var moment = require('moment'),
-    User   = require('../models/user');
+    User   = require('../models/user'),
+    usersController = require('../controllers/users');
 
 // In order to simplify our process, we will handle the request
 // inline here, instead of passing to controller files.
 module.exports = function(app, errorHandler) {
 
+  app.get('/api/users', usersController.index);
+  // app.put('/api/users/:id' usersController.update);
   app.post('/api/users',
 
     // validations
@@ -13,11 +16,10 @@ module.exports = function(app, errorHandler) {
     checkUserExists,
 
     // create new user
-    function(req, res, next) {
+    function (req, res, next) {
       User.create({
         email:    req.body.email,
-        password: req.body.password,
-        dob:      Date.parse(req.body.dob)
+        password: req.body.password
       }).then(function(newUser) {
         res.json({
           success: true,
@@ -31,6 +33,7 @@ module.exports = function(app, errorHandler) {
         next(err);
       });
   });
+
 
   // *** VALIDATIONS ***
 

@@ -5,11 +5,11 @@ var logger       = require('morgan');
 var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
 var cookieParser = require('cookie-parser');
+var locus        = require('locus');
 
 // Load local libraries.
 var env      = require('./config/environment'),
-    mongoose = require('./config/database'),
-    routes   = require('./routes/routes');
+    mongoose = require('./config/database');
 
 // Instantiate a server application.
 var app = express();
@@ -18,7 +18,6 @@ var app = express();
 app.set('title', env.TITLE);
 app.set('safe-title', env.SAFE_TITLE);
 app.set('secret-key', env.SECRET_KEY);
-
 // Create local variables for use thoughout the application.
 app.locals.title = app.get('title');
 
@@ -66,19 +65,20 @@ app.get('/api', function(req, res, next) {
   });
 });
 
+
 // Validation: check for correctly formed requests (content type).
-app.use(['/api/users', '/api/token'], function(req, res, next) {
-  if (req.get('Content-Type') !== 'application/json') {
-    errorHandler(
-      400,
-      'Request body must be JSON. Set your headers; see ' +
-      'http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17',
-      req, res
-    );
-  } else {
-    next();
-  }
-});
+// app.use(['/api/users', '/api/token'], function(req, res, next) {
+//   if (req.get('Content-Type') !== 'application/json') {
+//     errorHandler(
+//       400,
+//       'Request body must be JSON. Set your headers; see ' +
+//       'http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17',
+//       req, res
+//     );
+//   } else {
+//     next();
+//   }
+// });
 
 // Parsing and validation (replies with good errors for JSON parsing).
 app.use('/api', bodyParser.json());
@@ -91,8 +91,6 @@ require('./routes/tokenRoute')(app, errorHandler);
 
 // Authorized resource route (GET /me)
 require('./routes/meRoute')(app, errorHandler);
-
-app.use('/', routes);
 
 // Catches all 404 routes.
 app.use(function(req, res, next) {

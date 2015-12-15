@@ -7,23 +7,29 @@
   <meta name="description" content="An introduction to token-based auth.">
   <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <style>
   </style>
 
 </head>
 <body ng-controller="MainController as vm">
     <header class=" container-fluid navbar">
-      <h1>Grooves!</h1>
-      <button class="loginSignUp" ng-click="vm.signUp = !vm.login">Sign Up</button>
+      <h1>Grüv</h1>
+      <button class="loginSignUp" ng-click="vm.signUp = !vm.login" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
       <button class="loginSignUp" ng-click="vm.login = !vm.signUp">Login</button>
     </header>
     <main>
+
       <form id="user" class="pure-form center" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
         <h4>Create User Below</h4>
         <fieldset class="pure-group center">
           <input type="email"           ng-model="vm.user.email" class="email" placeholder="user@domain.com">
           <input type="password"        ng-model="vm.user.password" class="password" placeholder="secretpassword"> <br><br>
+          <p ng-bind="vm.failureMessage"><p>
+          <p ng-bind="vm.successMessage"><p>
           <a class="btn btn-danger" ng-click="vm.signUp = false">Cancel</a>
           <button type="submit" class="btn btn-primary">Submit</button>
         </fieldset>
@@ -34,6 +40,8 @@
         <fieldset class="pure-group center">
           <input  type="email"           ng-model="vm.auth.email"     ng-disabled="vm.auth.isLoggedIn" class="email" placeholder="user@domain.com">
           <input  type="password"        ng-model="vm.auth.password"  ng-disabled="vm.auth.isLoggedIn" class="password" placeholder="secretpassword"> <br><br>
+          <p ng-bind="vm.failureMessage"><p>
+          <p ng-bind="vm.successMessage"><p>
           <a class="btn btn-danger"      ng-click="vm.login = false">Cancel</a>
           <button type="submit"          ng-hide="vm.auth.isLoggedIn" class="btn btn-primary">Submit</button>
           <button type="button"          ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut()"      class="btn btn-danger">Log Out</button>

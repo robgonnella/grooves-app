@@ -13,8 +13,8 @@
     vm.user = userDataService;
     vm.auth = authService;
 
-    vm.successMessage = "Present all of the current user's data here.";
-    vm.failureMessage = "Present any error messages here.";
+    vm.successMessage = "";
+    vm.failureMessage = "";
 
     vm.createUser = function() {
       vm.user.create()
@@ -23,19 +23,20 @@
         $log.debug("Success:", data,status,headers,config)
 
         vm.successMessage = angular.toJson(data.data);
-        vm.failureMessage = "Present any error messages here.";
+        vm.failureMessage = "";
         vm.user.clear();
       })
 
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data,status,headers,config)
 
-        vm.successMessage = "Present all of the current user's data here.";
-        vm.failureMessage = angular.toJson(data.data);
+        vm.successMessage = "";
+        vm.failureMessage = angular.toJson(data.data.message);
       });
     };
 
     vm.logInUser = function() {
+
       vm.auth.logIn()
 
       .then(function(data) {
@@ -49,15 +50,15 @@
 
         vm.auth.clear();
 
-        vm.successMessage = angular.toJson(data.data);
-        vm.failureMessage = "Present any error messages here.";
+        vm.successMessage = angular.toJson(data.data.message);
+        vm.failureMessage = "";
       })
 
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data, status, headers, config)
 
-        vm.successMessage = "Present all of the current user's data here.";
-        vm.failureMessage = angular.toJson(data.data);
+        vm.successMessage = "";
+        vm.failureMessage = angular.toJson(data.data.message);
       });
     };
   }

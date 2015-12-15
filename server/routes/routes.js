@@ -6,10 +6,13 @@ var welcomeController = require('../controllers/welcome');
 var usersController   = require('../controllers/users');
 
 // root path:
-router.get('/', welcomeController.index);
+// app.get('/', welcomeController.index);
+router.get('/users',     usersController.index);
 
 // users resource paths:
-router.get('/users',     usersController.index);
 router.get('/users/:id', usersController.show);
+router.put('users/:id',  usersController.update);
+router.delete('users/:id', usersController.destroy);
+
 
 module.exports = router;
