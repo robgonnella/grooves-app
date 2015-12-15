@@ -9,7 +9,7 @@
 
   function userDataService($log, $http) {
     var user = {
-      email:           "pj@ga.co",
+      email:           "taco@taco.com",
       password:        "12345",
       create:          create,
       clear:           clear,
