@@ -13,8 +13,7 @@
     vm.user = userDataService;
     vm.auth = authService;
 
-    vm.successMessage = "";
-    vm.failureMessage = "";
+    vm.message = "";
 
     vm.createUser = function() {
       vm.user.create()
@@ -22,16 +21,13 @@
       .then(function(data, status, headers, config) {
         $log.debug("Success:", data,status,headers,config)
 
-        vm.successMessage = angular.toJson(data.data);
-        vm.failureMessage = "";
+        vm.message = angular.toJson(data.data.message);
         vm.user.clear();
       })
 
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data,status,headers,config)
-
-        vm.successMessage = "";
-        vm.failureMessage = angular.toJson(data.data.message);
+        vm.message = angular.toJson(data.data.message);
       });
     };
 
@@ -50,15 +46,13 @@
 
         vm.auth.clear();
 
-        vm.successMessage = angular.toJson(data.data.message);
-        vm.failureMessage = "";
+        vm.message = angular.toJson(data.data.message);
       })
 
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data, status, headers, config)
 
-        vm.successMessage = "";
-        vm.failureMessage = angular.toJson(data.data.message);
+        vm.message = angular.toJson(data.data.message);
       });
     };
   }
