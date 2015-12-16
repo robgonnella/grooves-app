@@ -28,7 +28,7 @@ module.exports = function(app, errorHandler) {
     ) {
       errorHandler(
         422,
-        'Missing required field: one of email, name, password, or dob.',
+        'Missing required field: one of email or password',
         req, res
       );
     } else {

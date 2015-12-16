@@ -8,10 +8,12 @@ var recordSchema = new mongoose.Schema({
   artist:      String,
   album:       String,
   genre:       String,
-  year:        Number,
-  recordLabel: String,
+  year:        String,
+  image:       String,
+  label:       String,
   condition:   String,
-  description: String
+  description: String,
+  price:       Number
 });
 
 var userSchema = new mongoose.Schema({
