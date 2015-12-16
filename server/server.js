@@ -67,18 +67,18 @@ app.get('/api', function(req, res, next) {
 
 
 // Validation: check for correctly formed requests (content type).
-// app.use(['/api/users', '/api/token'], function(req, res, next) {
-//   if (req.get('Content-Type') !== 'application/json') {
-//     errorHandler(
-//       400,
-//       'Request body must be JSON. Set your headers; see ' +
-//       'http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17',
-//       req, res
-//     );
-//   } else {
-//     next();
-//   }
-// });
+app.use(['/api/users', '/api/token'], function(req, res, next) {
+  if (req.get('Content-Type') !== 'application/json') {
+    errorHandler(
+      400,
+      'Request body must be JSON. Set your headers; see ' +
+      'http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17',
+      req, res
+    );
+  } else {
+    next();
+  }
+});
 
 // Parsing and validation (replies with good errors for JSON parsing).
 app.use('/api', bodyParser.json());

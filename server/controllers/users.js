@@ -10,7 +10,8 @@ var index = function(req, res, next){
 var create = function (req, res, next) {
   User.create({
     email:    req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    records:  req.body.records
   }).then(function(newUser) {
     res.json({
       success: true,
@@ -25,16 +26,26 @@ var create = function (req, res, next) {
   });
 }
 
+var update = function (req, res, next) {
+
+};
 
 var show = function(req, res, next){
   User.findById(req.params.id, function(error, user){
     if (error) res.json({message: 'Could not find user because ' + error});
-    res.render('users/show', {user: user});
+    res.json(user);
   });
 };
 
-var update = function(req, res, next) {
-
+var addRecord = function(req, res, next) {
+  User.findById(req.params.id, function(error, user) {
+    if(error) res.json({message: 'Could not find user because ' + error});
+    user.records.push(req.body.record);
+    user.save(function (error, user) {
+      if(error) res.json({message: 'Could not find user because ' + error});
+      res.json(user);
+    });
+  });
 }
 
 var destroy = function(req, res, next) {
@@ -43,7 +54,9 @@ var destroy = function(req, res, next) {
 
 module.exports = {
   index: index,
-  show:  show,
   update: update,
+  create: create,
+  show:  show,
+  addRecord: addRecord,
   destroy: destroy
 };

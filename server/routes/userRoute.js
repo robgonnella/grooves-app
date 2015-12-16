@@ -7,36 +7,20 @@ var moment = require('moment'),
 module.exports = function(app, errorHandler) {
 
   app.get('/api/users', usersController.index);
-  // app.put('/api/users/:id' usersController.update);
-  app.post('/api/users',
+  app.get('/api/users/:id', usersController.show);
+  app.put('/api/users/:id', usersController.update);
+  app.delete('/api/users/:id', usersController.destroy);
+  app.post('/api/users/:id/records', usersController.addRecord);
 
+  app.post('/api/users',
     // validations
     checkUserFields,
     checkPassword,
     checkUserExists,
-
-    // create new user
-    function (req, res, next) {
-      User.create({
-        email:    req.body.email,
-        password: req.body.password
-      }).then(function(newUser) {
-        res.json({
-          success: true,
-          message: 'Successfully created user.',
-          data: {
-            email: newUser.email,
-            id:    newUser._id
-          }
-        });
-      }).catch(function(err) {
-        next(err);
-      });
-  });
-
+    usersController.create
+  );
 
   // *** VALIDATIONS ***
-
   function checkUserFields(req, res, next) {
     if (
       !req.body.email    ||
