@@ -2,6 +2,6 @@
   "use strict";
 
   angular
-    .module("grooves-app", []);
+    .module("grooves-app", ['ui.router']);
 
 })();

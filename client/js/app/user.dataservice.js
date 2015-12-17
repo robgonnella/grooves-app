@@ -16,7 +16,18 @@
       currentUserData: currentUserData
     };
 
-    return user;
+
+    return {
+      user: user,
+      allRecords: allRecords
+    };
+
+    function allRecords() {
+      return $http({
+        url: "http://localhost:3000/api/records",
+        method: 'GET'
+      });
+    }
 
     function create() {
       $log.debug("Attempting to create:", user);

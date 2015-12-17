@@ -23,7 +23,7 @@ function makeRecords() {
       album:       faker.commerce.productAdjective(),
       genre:       '',
       year:        '',
-      image:       '../client/assets/45_rpm_record.png',
+      image:       '/assets/45_rpm_record.png',
       label:       '',
       condition:   faker.lorem.sentence(),
       description: faker.lorem.sentences(),

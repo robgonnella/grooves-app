@@ -8,6 +8,7 @@ module.exports = function(app, errorHandler) {
 
   app.get('/api/users', usersController.index);
   app.get('/api/users/:id', usersController.show);
+  app.get('/api/records', usersController.getAllRecords);
   app.put('/api/users/:id', usersController.update);
   app.delete('/api/users/:id', usersController.destroy);
   app.post('/api/users/:id/records', usersController.addRecord);

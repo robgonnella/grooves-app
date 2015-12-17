@@ -8,14 +8,28 @@
   MainController.$inject = ["userDataService", "authService", "$log"];
 
   function MainController(userDataService, authService, $log) {
+
     var vm = this;
-
-    vm.user = userDataService;
+    vm.user = userDataService.user;
     vm.auth = authService;
-
     vm.message = "";
+    vm.allRecords = collectAllRecords();
+    console.log(vm.allRecords);
+    //get all users records to display on home/landing page
+
+    function collectAllRecords() {
+      userDataService.allRecords()
+      .then(function(data) {
+        vm.allRecords = data.data;
+        return data.data;
+      })
+      .catch(function(data, status, headers, config) {
+        vm.message = angular.toJson(data.data.message)
+      });
+    }
 
     vm.createUser = function() {
+
       vm.user.create()
 
       .then(function(data, status, headers, config) {

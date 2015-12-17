@@ -30,6 +30,19 @@ var update = function (req, res, next) {
 
 };
 
+var getAllRecords = function(req, res, next) {
+  User.find({}, function(error, users) {
+    if(error) console.log(error);
+    var records = [];
+    users.forEach(function(user) {
+      user.records.forEach(function(record) {
+        records.push(record)
+      });
+    });
+    res.json(records);
+  });
+}
+
 var show = function(req, res, next){
   User.findById(req.params.id, function(error, user){
     if (error) res.json({message: 'Could not find user because ' + error});
@@ -58,5 +71,6 @@ module.exports = {
   create: create,
   show:  show,
   addRecord: addRecord,
+  getAllRecords: getAllRecords,
   destroy: destroy
 };

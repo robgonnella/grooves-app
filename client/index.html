@@ -9,6 +9,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">  <link rel="stylesheet" type="text/css" href="css/main.css">
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -25,7 +26,7 @@
     </header>
     <main>
 
-      <form id="user" class="pure-form center" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
+      <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
         <h4>Create User Below</h4>
         <fieldset class="pure-group center">
           <input type="email"           ng-model="vm.user.email" class="email" placeholder="user@domain.com">
@@ -36,7 +37,7 @@
         </fieldset>
       </form>
 
-      <form id="token" class="pure-form center" ng-show="vm.login && !vm.signUp" ng-submit="vm.logInUser()">
+      <form id="token" ng-show="vm.login && !vm.signUp" ng-submit="vm.logInUser()">
         <h4>Log In User</h4>
         <fieldset class="pure-group center">
           <input  type="email"           ng-model="vm.auth.email"     ng-disabled="vm.auth.isLoggedIn" class="email" placeholder="user@domain.com">
@@ -45,6 +46,20 @@
           <button type="submit" class="btn btn-primary" ng-click="vm.login = false">Submit</button>
         </fieldset>
       </form>
+
+      <div class="all-records" ng-repeat="record in vm.allRecords">
+        <div class="single-record">
+          <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
+          <p ng-bind="record.artist"></p>
+          <p ng-bind="record.album"></p>
+          <p>${{record.price}}</p>
+        </div>
+      </div>
+
+      <div ui-view>
+
+
+      </div>
 
     </main>
 

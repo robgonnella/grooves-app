@@ -7,11 +7,9 @@
 }
 
 body {
-  height: 850px;
   text-align: center;
-  background-image: url(/assets/exploding-vinyl.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
+  background-image: url(/assets/wall-of-album-covers.jpg);
+
 }
 
 .loginSignUp {
@@ -21,7 +19,7 @@ body {
 }
 
 #user {
-  margin: 25% auto;
+  margin: 15% auto;
   background: white;
   width: 400px;
   height: 150px;
@@ -29,9 +27,23 @@ body {
 }
 
 #token {
-  margin: 25% auto;
+  margin: 15% auto;
   background: white;
   width: 400px;
   height: 150px;
   border: solid #4CA1FF;
+}
+
+img {
+  max-height: 75px;
+  max-width: 75px;
+}
+
+.all-records {
+  margin: 50px;
+  padding: 10px;
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
 }
