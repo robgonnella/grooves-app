@@ -11,17 +11,27 @@
 
     var vm = this;
     vm.user = userDataService.user;
+    vm.currentUser = getCurrentUser() || '';
     vm.auth = authService;
     vm.message = "";
     vm.allRecords = collectAllRecords();
-    console.log(vm.allRecords);
-    //get all users records to display on home/landing page
 
+    function getCurrentUser() {
+      userDataService.user.currentUserData()
+
+      .then(function(data) {
+        vm.currentUser = data.data.data;
+      })
+      .catch(function(data, status, headers, config) {
+        $log.debug("Fail", data, status, headers, debug);
+      });
+    }
+
+    //get all users records to display on home/landing page
     function collectAllRecords() {
       userDataService.allRecords()
       .then(function(data) {
         vm.allRecords = data.data;
-        return data.data;
       })
       .catch(function(data, status, headers, config) {
         vm.message = angular.toJson(data.data.message)
@@ -51,15 +61,13 @@
 
       .then(function(data) {
         $log.debug("Success:", data)
-
         return vm.user.currentUserData();
       })
 
       .then(function(data) {
         $log.debug("Success:", data)
-
+        vm.currentUserId = data.data.data._id;
         vm.auth.clear();
-
         vm.message = angular.toJson(data.data.message);
       })
 

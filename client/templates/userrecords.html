@@ -1,0 +1,9 @@
+
+<div class="all-records" ng-repeat="record in vm.currentUser.records">
+  <div class="single-record">
+    <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
+    <p ng-bind="record.artist"></p>
+    <p ng-bind="record.album"></p>
+    <p>${{record.price}}</p>
+  </div>
+</div>

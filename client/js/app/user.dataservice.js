@@ -11,6 +11,8 @@
     var user = {
       email:           "",
       password:        "",
+      likes:           0,
+      records:         [],
       create:          create,
       clear:           clear,
       currentUserData: currentUserData

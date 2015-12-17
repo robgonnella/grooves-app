@@ -46,7 +46,7 @@ var getAllRecords = function(req, res, next) {
 var show = function(req, res, next){
   User.findById(req.params.id, function(error, user){
     if (error) res.json({message: 'Could not find user because ' + error});
-    res.json(user);
+    res.send({user: user});
   });
 };
 

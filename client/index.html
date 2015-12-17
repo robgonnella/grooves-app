@@ -19,12 +19,17 @@
 <body ng-controller="MainController as vm">
     <header class=" container-fluid navbar">
       <h1>Grüv</h1>
-      <button class="loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</button>
-      <button class="loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</button>
-      <button class="btn btn-danger" type="button" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</button>
+      <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
+      <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>
+      <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.showAllRecords = true"ui-sref="account">Account</a>
+      <a class="btn btn-danger" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
       <p ng-bind="vm.message" ng-show="vm.message"><p>
     </header>
     <main>
+
+    <div ui-view>
+
+    </div>
 
       <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
         <h4>Create User Below</h4>
@@ -47,18 +52,13 @@
         </fieldset>
       </form>
 
-      <div class="all-records" ng-repeat="record in vm.allRecords">
+      <div class="all-records" ng-hide="vm.showAllRecords" ng-repeat="record in vm.allRecords">
         <div class="single-record">
           <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
           <p ng-bind="record.artist"></p>
           <p ng-bind="record.album"></p>
           <p>${{record.price}}</p>
         </div>
-      </div>
-
-      <div ui-view>
-
-
       </div>
 
     </main>

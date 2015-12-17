@@ -12,9 +12,10 @@
     $httpProvider.interceptors.push("tokenSigningService");
 
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: '../../templates/records.html'
+
+      .state('account', {
+        url: '/user/records',
+        templateUrl: 'templates/userrecords.html'
       });
   }
 
