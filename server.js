@@ -6,6 +6,7 @@ var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
 var cookieParser = require('cookie-parser');
 var locus        = require('locus');
+require('dotenv').load();
 
 // Load local libraries.
 var env      = require('./config/environment'),
@@ -13,6 +14,7 @@ var env      = require('./config/environment'),
 
 // Instantiate a server application.
 var app = express();
+
 
 // Configure the application (and set it's title!).
 app.set('title', env.TITLE);
