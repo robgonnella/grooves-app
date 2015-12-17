@@ -21,7 +21,7 @@
       <h1>Grüv</h1>
       <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
       <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>
-      <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.showAllRecords = true"ui-sref="account">Account</a>
+      <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.showAllRecords = true; vm.currentUser()" ui-sref="account">Account</a>
       <a class="btn btn-danger" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
       <p ng-bind="vm.message" ng-show="vm.message"><p>
     </header>
@@ -36,7 +36,7 @@
         <fieldset class="pure-group center">
           <input type="email"           ng-model="vm.user.email" class="email" placeholder="user@domain.com">
           <input type="password"        ng-model="vm.user.password" class="password" placeholder="secretpassword"> <br><br>
-          <a class="btn btn-danger" ng-click="vm.signUp = false; vm.message = ''; vm.message = '';">Cancel</a>
+          <a class="btn btn-danger" ng-click="vm.signUp = false; vm.message = ''">Cancel</a>
           <button ng-hide="vm.message" type="submit" class="btn btn-primary">Submit</button>
           <a ng-show="vm.message" ng-click="vm.login = true; vm.signUp=false" class="btn btn-primary">Continue to Login</a>
         </fieldset>
@@ -47,7 +47,7 @@
         <fieldset class="pure-group center">
           <input  type="email"           ng-model="vm.auth.email"     ng-disabled="vm.auth.isLoggedIn" class="email" placeholder="user@domain.com">
           <input  type="password"        ng-model="vm.auth.password"  ng-disabled="vm.auth.isLoggedIn" class="password" placeholder="secretpassword"> <br><br>
-          <a class="btn btn-danger"      ng-click="vm.login = false; vm.message = ''; vm.message = '';">Cancel</a>
+          <a class="btn btn-danger"      ng-click="vm.login = false; vm.message = ''">Cancel</a>
           <button type="submit" class="btn btn-primary" ng-click="vm.login = false">Submit</button>
         </fieldset>
       </form>

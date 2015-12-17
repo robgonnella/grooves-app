@@ -5,16 +5,17 @@
     .module("grooves-app")
     .controller("MainController", MainController);
 
-  MainController.$inject = ["userDataService", "authService", "$log"];
+  MainController.$inject = ["userDataService", "authService", "$log", "cartDataService"];
 
-  function MainController(userDataService, authService, $log) {
+  function MainController(userDataService, authService, $log, cartDataService) {
 
     var vm = this;
     vm.user = userDataService.user;
-    vm.currentUser = getCurrentUser() || '';
+    vm.currentUser = getCurrentUser;
     vm.auth = authService;
     vm.message = "";
     vm.allRecords = collectAllRecords();
+    vm.addToCart = cartDataService.add;
 
     function getCurrentUser() {
       userDataService.user.currentUserData()

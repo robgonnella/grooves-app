@@ -22,7 +22,7 @@ module.exports = function(app, errorHandler) {
         },
         app.get('secret-key'),
         {
-          expiresIn: 90 // short, so we can test better
+          expiresIn: 3600*24*30 // short, so we can test better
         }
       );
 
