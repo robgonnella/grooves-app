@@ -13,8 +13,8 @@
     var cart = {
       add: add,
       remove: remove,
-      list: list
-    }
+      list: this.list
+    };
 
     deserialize();
 
@@ -22,7 +22,7 @@
 
 
     function add (item) {
-      list.push(item);
+      this.list.push(item);
       serialize();
     }
 

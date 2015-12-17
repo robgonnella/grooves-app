@@ -24,6 +24,11 @@
       <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.showAllRecords = true; vm.currentUser()" ui-sref="account">Account</a>
       <a class="btn btn-danger" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
       <p ng-bind="vm.message" ng-show="vm.message"><p>
+
+      <div id="cart" ng-controller="CartController as vm">
+        <img src="assets/empty-cart-dark.png" ng-bind="vm.list.length"></img>
+      </div>
+
     </header>
     <main>
 
@@ -68,7 +73,9 @@
   <script src="/js/app/token.service.js"></script>
   <script src="/js/app/tokenSigning.service.js"></script>
   <script src="/js/app/auth.service.js"></script>
+  <script src="/js/app/cart.dataservice.js"></script>
   <script src="/js/app/user.dataservice.js"></script>
+  <script src="/js/app/cart.controller.js"></script>
   <script src="/js/app/main.controller.js"></script>
 </body>
 </html>

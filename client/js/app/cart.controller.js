@@ -10,7 +10,7 @@
   function CartController ($log, cartDataService) {
     var vm = this;
 
-    cart = cartDataService;
+    vm.cart = cartDataService;
     vm.list = cart.list;
     vm.remove = cart.remove;
 

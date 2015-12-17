@@ -15,6 +15,8 @@
     vm.auth = authService;
     vm.message = "";
     vm.allRecords = collectAllRecords();
+    vm.createUser = createUser;
+    vm.logInUser = logInUser;
     vm.addToCart = cartDataService.add;
 
     function getCurrentUser() {
@@ -39,7 +41,7 @@
       });
     }
 
-    vm.createUser = function() {
+    function createUser() {
 
       vm.user.create()
 
@@ -56,7 +58,7 @@
       });
     };
 
-    vm.logInUser = function() {
+    function logInUser() {
 
       vm.auth.logIn()
 

@@ -1,10 +1,10 @@
 .navbar{
+  color: white;
   padding-left: 200px;
   padding-right: 215px;
   text-align: center;
   font-family: 'Permanent Marker', cursive;
-  /*background-color: #4CA1FF;*/
-  background-color: #998E6A;
+  background-color: rgba(0,0,0,.6);
 }
 
 body {
@@ -46,5 +46,8 @@ img {
   background-color: white;
   height: 200px;
   width: 200px;
+  display: inline-block;
+}
+#cart {
   display: inline-block;
 }
