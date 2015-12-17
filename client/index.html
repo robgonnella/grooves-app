@@ -18,29 +18,30 @@
 </head>
 <body ng-controller="MainController as vm">
     <header class=" container-fluid navbar">
-      <h1>Grüv</h1>
-      <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
-      <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>
-      <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.showAllRecords = true; vm.currentUser()" ui-sref="account">Account</a>
-      <a class="btn btn-danger" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
-      <p ng-bind="vm.message" ng-show="vm.message"><p>
-
-      <div id="cart" ng-controller="CartController as vm">
-        <img src="assets/empty-cart-dark.png" ng-bind="vm.list.length"></img>
+      <div id="navcontents">
+        <h1 ui-sref="home">Grüv</h1>
+        <div ng-controller="CartController as vm">
+          <img id="cart" ng-src="assets/empty-cart-light.png" ui-sref="cart"></img>
+          <p id="cart-total">= {{vm.cart.list.length}} items<p>
+          <p ng-bind="vm.list.length"></p>
+        </div>
+        <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
+        <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>
+        <div id="logged-in">
+          <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.currentUser()" ui-sref="account">Account</a>
+          <a class="btn btn-danger" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
+        </div>
       </div>
 
+      <br>
     </header>
-    <main>
 
-    <div ui-view>
-
-    </div>
-
+    <main class="container-fluid">
       <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
         <h4>Create User Below</h4>
         <fieldset class="pure-group center">
           <input type="email"           ng-model="vm.user.email" class="email" placeholder="user@domain.com">
-          <input type="password"        ng-model="vm.user.password" class="password" placeholder="secretpassword"> <br><br>
+          <input type="password"        ng-model="vm.user.password" class="password" placeholder="password"> <br><br>
           <a class="btn btn-danger" ng-click="vm.signUp = false; vm.message = ''">Cancel</a>
           <button ng-hide="vm.message" type="submit" class="btn btn-primary">Submit</button>
           <a ng-show="vm.message" ng-click="vm.login = true; vm.signUp=false" class="btn btn-primary">Continue to Login</a>
@@ -57,14 +58,7 @@
         </fieldset>
       </form>
 
-      <div class="all-records" ng-hide="vm.showAllRecords" ng-repeat="record in vm.allRecords">
-        <div class="single-record">
-          <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
-          <p ng-bind="record.artist"></p>
-          <p ng-bind="record.album"></p>
-          <p>${{record.price}}</p>
-        </div>
-      </div>
+      <div ui-view></div>
 
     </main>
 

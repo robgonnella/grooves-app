@@ -1,5 +1,4 @@
-
-<div class="all-records" ng-repeat="record in vm.currentUser.records" ng-load="vm.currentUser()">
+<div class="all-records" ng-repeat="record in vm.allRecords">
   <div class="single-record" ui-sref="record">
     <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
     <p ng-bind="record.artist"></p>

@@ -1,10 +1,27 @@
 .navbar{
-  color: white;
+  color: lightgray;
   padding-left: 200px;
   padding-right: 215px;
   text-align: center;
   font-family: 'Permanent Marker', cursive;
   background-color: rgba(0,0,0,.6);
+}
+#navcontents a {
+  display: inline-block;
+}
+
+#navcontents h1 {
+  cursor: pointer;
+}
+
+#cart {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#cart-total {
+  font-size: 18px;
+  display: inline-block;
 }
 
 body {
@@ -41,13 +58,20 @@ img {
 }
 
 .all-records {
+  cursor: pointer;
   margin: 50px;
   padding: 10px;
   background-color: white;
   height: 200px;
   width: 200px;
   display: inline-block;
+  border-radius: 15px;
 }
-#cart {
-  display: inline-block;
+.single-record {
+  cursor: pointer;
+}
+#single-record-view {
+  height: 6000px;
+  min-width: 100px;
+  background-color: rgba(255,255,255, .7);
 }
