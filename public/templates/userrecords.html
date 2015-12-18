@@ -79,7 +79,7 @@
     <p>{{record.album || '-'}}</p>
     <p>${{record.price}}</p>
     <a class="btn btn-default edit" ng-click="vm.selectRecord(record)">Edit</a>
-    <a class="btn btn-default delete">Delete</a>
+    <a class="btn btn-default delete" ng-click="vm.deleteRecord(record)">Delete</a>
   </div>
 </div>
 <br>
