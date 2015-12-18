@@ -26,7 +26,7 @@
 
     function allRecords() {
       return $http({
-        url: "http://localhost:3000/api/records",
+        url: "https://agile-lowlands-5230.herokuapp.com/api/records",
         method: 'GET'
       });
     }
@@ -35,7 +35,7 @@
       $log.debug("Attempting to create:", user);
 
       return $http({
-        url:     "http://localhost:3000/api/users",
+        url:     "https://agile-lowlands-5230.herokuapp.com/api/users",
         method:  "POST",
         headers: {"Content-Type": "application/json"},
         data: angular.toJson({
@@ -56,7 +56,7 @@
       $log.debug("Retrieving current user data.");
 
       return $http({
-        url:     "http://localhost:3000/api/me",
+        url:     "https://agile-lowlands-5230.herokuapp.com/api/me",
         method:  "GET"
       });
     }
