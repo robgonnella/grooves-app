@@ -1,8 +1,9 @@
 <div class="all-records" ng-repeat="record in vm.allRecords">
-  <div class="single-record" ui-sref="record">
-    <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
-    <p ng-bind="record.artist"></p>
-    <p ng-bind="record.album"></p>
+  <div class="single-record">
+    <img ui-sref="record" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
+    <p>{{record.artist}}</p>
+    <p>{{record.album || "-" }}</p>
     <p>${{record.price}}</p>
+    <a class="btn btn-default">Add to Cart</a>
   </div>
 </div>

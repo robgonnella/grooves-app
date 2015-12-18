@@ -26,8 +26,11 @@ var create = function (req, res, next) {
   });
 }
 
-var update = function (req, res, next) {
-
+var updateRecord = function (req, res, next) {
+  eval(locus);
+  User.findById(req.params.id, function(error, user) {
+    if(error) console.log(error);
+  });
 };
 
 var getAllRecords = function(req, res, next) {
@@ -60,6 +63,9 @@ var addRecord = function(req, res, next) {
     });
   });
 }
+var update = function (req, res, next) {
+
+};
 
 var destroy = function(req, res, next) {
 
@@ -72,5 +78,6 @@ module.exports = {
   show:  show,
   addRecord: addRecord,
   getAllRecords: getAllRecords,
+  updateRecord:  updateRecord,
   destroy: destroy
 };

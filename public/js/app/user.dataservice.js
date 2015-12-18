@@ -15,14 +15,34 @@
       records:         [],
       create:          create,
       clear:           clear,
-      currentUserData: currentUserData
+      currentUserData: currentUserData,
+      saveNewRecord:   saveNewRecord,
+      allRecords:      allRecords,
+      updateRecord:    updateRecord
     };
 
 
-    return {
-      user: user,
-      allRecords: allRecords
-    };
+    return user;
+
+    function updateRecord (record, userId) {
+      $log.debug(record);
+      return $http({
+        url:     "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
+        method:  "PUT",
+        headers: {"Content-Type": "application/json"},
+        data:   angular.toJson(record)
+      })
+    }
+
+
+    function saveNewRecord (record, id) {
+      return $http ({
+        url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+id+"/records",
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        data: angular.toJson({record:record})
+      })
+    }
 
     function allRecords() {
       return $http({
@@ -30,6 +50,7 @@
         method: 'GET'
       });
     }
+
 
     function create() {
       $log.debug("Attempting to create:", user);

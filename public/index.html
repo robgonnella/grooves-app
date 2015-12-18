@@ -28,7 +28,7 @@
         <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
         <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>
         <div id="logged-in">
-          <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.currentUser()" ui-sref="account">Account</a>
+          <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ui-sref="account">Account</a>
           <a class="btn btn-danger" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
         </div>
       </div>

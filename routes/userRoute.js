@@ -12,6 +12,7 @@ module.exports = function(app, errorHandler) {
   app.put('/api/users/:id', usersController.update);
   app.delete('/api/users/:id', usersController.destroy);
   app.post('/api/users/:id/records', usersController.addRecord);
+  app.put('/api/users/:id/record/:id', usersController.updateRecord);
 
   app.post('/api/users',
     // validations

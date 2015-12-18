@@ -1,9 +1,87 @@
 
-<div class="all-records" ng-repeat="record in vm.currentUser.records" ng-load="vm.currentUser()">
-  <div class="single-record" ui-sref="record">
-    <img ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
-    <p ng-bind="record.artist"></p>
-    <p ng-bind="record.album"></p>
+<a class="btn btn-default" ng-click="vm.addForm = true">Add Record</a>
+<br>
+<form id="add-record" class="record-form" ng-show="vm.addForm" ng-submit="vm.addRecord()">
+  <h4>Enter Record Info Below</h4>
+  <fieldset class="pure-group center">
+
+    <div class="add-form">
+      <label for="exampleInputName2">Artist</label>
+      <input ng-model="vm.newRecord.artist" placeholder="Artist">
+    </div>
+
+    <div class="add-form">
+      <label for="exampleInputName2">Album</label>
+      <input ng-model="vm.newRecord.album" placeholder="Album"> <br>
+    </div>
+
+    <div class="add-form">
+      <label for="exampleInputName2">Year</label>
+      <input ng-model="vm.newRecord.year" placeholder="Year">
+    </div>
+
+    <div class="add-form">
+      <label for="exampleInputName2">Label</label>
+      <input ng-model="vm.newRecord.label" placeholder="Label">
+    </div>
+
+    <div class="add-form">
+      <label for="exampleInputName2">Price</label>
+      <input ng-model="vm.newRecord.price" placeholder="Price"><br>
+    </div class="add-form">
+
+    <label for="exampleInputName2">Description</label>
+      <textarea ng-model="vm.newRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
+
+    <br>
+
+    <a class="btn btn-danger" ng-click="vm.addForm = false">Cancel</a>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+
+<form id="edit-record" class="record-form" ng-show="vm.addFormEdit" ng-submit="vm.updateRecord(vm.selectedRecord)">
+  <h4>Enter Record Info Below</h4>
+  <fieldset class="pure-group center">
+    <div class="add-form">
+      <label for="exampleInputName2">Artist</label>
+      <input ng-model="vm.selectedRecord.artist" type="name" placeholder="Artist">
+    </div>
+    <div class="add-form">
+      <label for="exampleInputName2">Album</label>
+      <input ng-model="vm.selectedRecord.album" type="name" placeholder="Album"> <br>
+    </div>
+    <div class="add-form">
+      <label for="exampleInputName2">Year</label>
+      <input ng-model="vm.selectedRecord.year" type="name" placeholder="Year">
+    </div>
+    <div class="add-form">
+      <label for="exampleInputName2">Label</label>
+      <input ng-model="vm.selectedRecord.label" type="name" placeholder="Label">
+    </div>
+    <div class="add-form">
+      <label for="exampleInputName2">Price</label>
+      <input ng-model="vm.selectedRecord.price" type="name" placeholder="Price"><br>
+    </div class="add-form">
+    <label for="exampleInputName2">Description</label>
+      <textarea ng-model="vm.selectedRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
+    <br>
+    <a class="btn btn-danger" ng-click="vm.addFormEdit = false">Cancel</a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+
+<div class="user-records" ng-repeat="record in vm.currentUser.records">
+  <div class="single-record">
+    <img ui-sref="record" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
+    <p>{{record.artist}}</p>
+    <p>{{record.album || '-'}}</p>
     <p>${{record.price}}</p>
+    <a class="btn btn-default edit" ng-click="vm.selectRecord(record)">Edit</a>
+    <a class="btn btn-default delete">Delete</a>
   </div>
 </div>
+<br>
+
+
