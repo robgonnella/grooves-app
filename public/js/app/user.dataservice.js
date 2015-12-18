@@ -29,7 +29,7 @@
       $log.debug(record)
       return $http({
         url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
-        method: "POST"
+        method: "DELETE"
       })
     }
 
@@ -37,7 +37,7 @@
       $log.debug(record);
       return $http({
         url:     "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
-        method:  "POST",
+        method:  "PUT",
         headers: {"Content-Type": "application/json"},
         data:    angular.toJson({record:record})
       })
