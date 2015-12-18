@@ -30,7 +30,8 @@
       return $http({
         url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id+"/d",
         headers: {"Content-Type": "application/json"},
-        method: "PUT"
+        method: "PUT",
+        data: angular.toJson({})
       })
     }
 

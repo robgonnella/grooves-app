@@ -40,6 +40,7 @@
 
       .then(function(data) {
         $log.debug("Successfully deleted record")
+        getAllRecords();
       })
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
@@ -51,12 +52,11 @@
 
       .then(function(data) {
         vm.addFormEdit = false;
-        getAllRecords();
       })
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
       });
-
+      getAllRecords();
     }
 
     function addRecord() {
