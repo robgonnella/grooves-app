@@ -40,7 +40,7 @@
 
       .then(function(data) {
         $log.debug("Successfully deleted record")
-        getAllRecords();
+        getCurrentUser();
       })
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
@@ -52,11 +52,11 @@
 
       .then(function(data) {
         vm.addFormEdit = false;
+        getCurrentUser();
       })
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
       });
-      getAllRecords();
     }
 
     function addRecord() {
@@ -66,7 +66,7 @@
       .then(function(data) {
         vm.newRecord = "";
         vm.addForm = false;
-        getAllRecords();
+        getCurrentUser();
       })
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
