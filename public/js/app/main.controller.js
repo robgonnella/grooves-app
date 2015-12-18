@@ -20,6 +20,7 @@
     vm.addToCart = cartDataService.add;
     vm.addRecord = addRecord;
     vm.updateRecord = updateRecord;
+    vm.deleteRecord = deleteRecord;
     vm.newRecord = {
       artist: "",
       album:  "",
@@ -33,6 +34,17 @@
       vm.selectedRecord = angular.fromJson(record);
       vm.addFormEdit = true;
     };
+
+    function deleteRecord (record) {
+      vm.user.deleteRecord(record, currentUser._id)
+
+      .then(function(data) {
+        $log.debug("Successfully deleted record")
+      })
+      .catch(function(data, status, headers, config) {
+        $log.debug("Fail", data, status, headers, config);
+      });
+    }
 
     function updateRecord (record) {
       vm.user.updateRecord(record, vm.currentUser._id)

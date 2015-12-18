@@ -18,19 +18,28 @@
       currentUserData: currentUserData,
       saveNewRecord:   saveNewRecord,
       allRecords:      allRecords,
-      updateRecord:    updateRecord
+      updateRecord:    updateRecord,
+      deleteRecord:    deleteRecord
     };
 
 
     return user;
 
+    function deleteRecord (record, userId) {
+      $log.debug(record)
+      return $http({
+        url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
+        method: "POST"
+      })
+    }
+
     function updateRecord (record, userId) {
       $log.debug(record);
       return $http({
         url:     "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
-        method:  "PUT",
+        method:  "POST",
         headers: {"Content-Type": "application/json"},
-        data:   angular.toJson(record)
+        data:    angular.toJson({record:record})
       })
     }
 

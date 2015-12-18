@@ -9,10 +9,9 @@ module.exports = function(app, errorHandler) {
   app.get('/api/users', usersController.index);
   app.get('/api/users/:id', usersController.show);
   app.get('/api/records', usersController.getAllRecords);
-  app.put('/api/users/:id', usersController.update);
-  app.delete('/api/users/:id', usersController.destroy);
   app.post('/api/users/:id/records', usersController.addRecord);
-  app.put('/api/users/:id/record/:id', usersController.updateRecord);
+  app.put('/api/users/:id/records/:record_id', usersController.updateRecord);
+  app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
 
   app.post('/api/users',
     // validations

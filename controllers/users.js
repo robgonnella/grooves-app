@@ -24,12 +24,20 @@ var create = function (req, res, next) {
   }).catch(function(err) {
     next(err);
   });
-}
+};
 
 var updateRecord = function (req, res, next) {
-  eval(locus);
+
   User.findById(req.params.id, function(error, user) {
     if(error) console.log(error);
+    user.records = user.records.filter(function(record) {
+      return record._id != req.params.record_id
+    });
+    user.records.push(req.body.record);
+    user.save(function (error, user) {
+      if(error) res.json({message: 'Could not find user because ' + error});
+      res.json(user);
+    });
   });
 };
 
@@ -44,7 +52,7 @@ var getAllRecords = function(req, res, next) {
     });
     res.json(records);
   });
-}
+};
 
 var show = function(req, res, next){
   User.findById(req.params.id, function(error, user){
@@ -62,22 +70,27 @@ var addRecord = function(req, res, next) {
       res.json(user);
     });
   });
-}
-var update = function (req, res, next) {
-
 };
 
-var destroy = function(req, res, next) {
-
+var destroyRecord = function(req, res, next) {
+  User.findById(req.params.id, function(error, user) {
+    if(error) console.log(error);
+    user.records = user.records.filter(function(record) {
+      return record._id != req.params.record_id
+    });
+    user.save(function (error, user) {
+      if(error) res.json({message: 'Could not find user because ' + error});
+      res.json(user);
+    });
+  });
 };
 
 module.exports = {
   index: index,
-  update: update,
   create: create,
   show:  show,
   addRecord: addRecord,
   getAllRecords: getAllRecords,
   updateRecord:  updateRecord,
-  destroy: destroy
+  destroyRecord: destroyRecord
 };
