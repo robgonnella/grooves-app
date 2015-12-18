@@ -74,7 +74,7 @@
 
 <div class="user-records" ng-repeat="record in vm.currentUser.records">
   <div class="single-record">
-    <img ui-sref="record" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
+    <img ui-sref="record" ng-click="vm.selectRecord()" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
     <p>{{record.artist}}</p>
     <p>{{record.album || '-'}}</p>
     <p>${{record.price}}</p>

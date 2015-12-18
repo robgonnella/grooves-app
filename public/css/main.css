@@ -55,9 +55,14 @@ body {
   border: solid #4CA1FF;
 }
 
+
 img {
   max-height: 75px;
   max-width: 75px;
+}
+#prince {
+  min-height: 1000px;
+  min-width: 700px;
 }
 
 .all-records {
@@ -101,3 +106,4 @@ img {
 .add-form {
   width: 15px;
 }
+
