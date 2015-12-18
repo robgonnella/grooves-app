@@ -42,7 +42,7 @@ User.remove({}, function(error) {
       console.log(error);
     } else {
       console.log(`Database seeded with ${users.length} users`);
-      mongoose.disconnect();
     }
+    mongoose.disconnect();
   });
 })
