@@ -36,7 +36,7 @@
     };
 
     function deleteRecord (record) {
-      vm.user.deleteRecord(record, currentUser._id)
+      vm.user.deleteRecord(record, vm.currentUser._id)
 
       .then(function(data) {
         $log.debug("Successfully deleted record")
