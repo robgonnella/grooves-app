@@ -11,7 +11,7 @@
 
     var vm = this;
     vm.user = userDataService;
-    vm.currentUser = getCurrentUser();
+    vm.getCurrentUser = getCurrentUser;
     vm.auth = authService;
     vm.message = "";
     vm.allRecords = getAllRecords();
@@ -21,6 +21,7 @@
     vm.addRecord = addRecord;
     vm.updateRecord = updateRecord;
     vm.deleteRecord = deleteRecord;
+    vm.selectRecord = selectRecord;
     vm.newRecord = {
       artist: "",
       album:  "",
@@ -30,7 +31,7 @@
       description: ""
     };
 
-    vm.selectRecord = function(record) {
+    function selectRecord (record) {
       vm.selectedRecord = angular.fromJson(record);
       vm.addFormEdit = true;
     };
@@ -85,13 +86,24 @@
 
     //get all users records to display on home/landing page
     function getAllRecords() {
-      vm.user.allRecords()
-      .then(function(data) {
-        vm.allRecords = data.data;
-      })
-      .catch(function(data, status, headers, config) {
-        $log.debug("Success:", data,status,headers,config)
-      });
+      if (vm.currentUser) {
+        getCurrentUser()
+        vm.user.allRecords()
+        .then(function(data) {
+          vm.allRecords = data.data;
+        })
+        .catch(function(data, status, headers, config) {
+          $log.debug("Success:", data,status,headers,config)
+        });
+      } else {
+          vm.user.allRecords()
+          .then(function(data) {
+            vm.allRecords = data.data;
+          })
+          .catch(function(data, status, headers, config) {
+            $log.debug("Success:", data,status,headers,config)
+          });
+        }
     }
 
     function createUser() {

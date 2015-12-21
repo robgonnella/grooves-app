@@ -1,5 +1,5 @@
 
-<a class="btn btn-default" ng-click="vm.addForm = true">Add Record</a>
+<a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.addForm = true">Add Record</a>
 <br>
 <form id="add-record" class="record-form" ng-show="vm.addForm" ng-submit="vm.addRecord()">
   <h4>Enter Record Info Below</h4>
@@ -78,8 +78,8 @@
     <p>{{record.artist}}</p>
     <p>{{record.album || '-'}}</p>
     <p>${{record.price}}</p>
-    <a class="btn btn-default edit" ng-click="vm.selectRecord(record)">Edit</a>
-    <a class="btn btn-default delete" ng-click="vm.deleteRecord(record)">Delete</a>
+    <a class="btn btn-default edit" ng-show="vm.auth.isLoggedIn" ng-click="vm.selectRecord(record)">Edit</a>
+    <a class="btn btn-default delete" ng-show="vm.auth.isLoggedIn" ng-click="vm.deleteRecord(record)">Delete</a>
   </div>
 </div>
 <br>
