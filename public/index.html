@@ -19,7 +19,7 @@
 <body ng-controller="MainController as vm">
     <header class=" container-fluid navbar">
       <div id="navcontents">
-        <h1 ui-sref="home">Grüv</h1>
+        <h1 ui-sref="home" ng-click="vm.allRecords">Grüv</h1>
         <div ng-controller="CartController as vm">
           <img id="cart" ng-src="assets/empty-cart-light.png" ui-sref="cart"></img>
           <p id="cart-total">= {{vm.cart.list.length}} items<p>
@@ -33,7 +33,8 @@
       <br>
     </header>
 
-    <input id="search" class="form-control input-lg" ng-model="vm.search" type="text" placeholder="search">
+    <input id="search1" class="form-control input-lg" ng-model="vm.search1" type="text" placeholder="search artist/album/label">
+    <input id="search2" class="form-control input-lg" ng-model="vm.search2" type="text" placeholder="search year">
 
     <main class="container-fluid">
       <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">

@@ -2,10 +2,16 @@
 <div id="single-record-view">
   <br>
   <img id="record-image" ng-src="{{vm.selectedRecord.image || '/assets/45_rpm_record.png'}}">
-  <h2>Artist: {{vm.selectedRecord.artist}}</h2>
-  <h3>Album: {{vm.selectedRecord.album}}</h3>
-  <h4>Year: {{vm.selectedRecord.year}}</h4>
+  <div id='record-info'>
+    <h2>{{vm.selectedRecord.artist}}</h2>
+    <h3>{{vm.selectedRecord.album}}</h3>
+    <h3>{{vm.selectedRecord.year}}</h3>
+    <h3>${{vm.selectedRecord.price}}</h3>
+  </div>
   <h4>Label: {{vm.selectedRecord.label}}</h4>
-  <h4>Price: ${{vm.selectedRecord.price}}</h4>
   <h4>Description: {{vm.selectedRecord.description}}</h4>
+  <br>
+  <div id="record-view-addcart">
+    <a class="btn btn-primary">Add to Cart</a>
+  </div>
 </div>

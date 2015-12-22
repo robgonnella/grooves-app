@@ -73,12 +73,12 @@
   </fieldset>
 </form>
 
-<div class="user-records" ng-repeat="record in vm.currentUser.records | filter: vm.search">
+<div class="user-records" ng-repeat="record in vm.currentUser.records | filter: vm.search1 | filter: vm.search2">
   <div class="single-record" ng-click="vm.selectRecord(record)">
     <img ui-sref="record" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
-    <p>{{record.artist}}</p>
-    <p>{{record.album || '-'}}</p>
-    <p>${{record.price}}</p>
+    <p ng-bind="record.artist"></p>
+    <p ng-bind="record.album || '-'"></p>
+    <p ng-bind="'$' + record.price"></p>
     <p ng-bind="record.label" ng-hide="true"></p>
     <a class="btn btn-default edit" ng-show="vm.auth.isLoggedIn" ng-click="vm.selectRecord(record); vm.addFormEdit = true">Edit</a>
     <a class="btn btn-danger delete" ng-show="vm.auth.isLoggedIn" ng-click="vm.deleteRecord(record)">Delete</a>

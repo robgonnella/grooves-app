@@ -45,6 +45,7 @@
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
       });
+      getAllRecords();
     }
 
     function updateRecord (record) {
@@ -57,10 +58,11 @@
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
       });
+      getAllRecords();
     }
 
     function addRecord() {
-      // vm.currentUser.records.push(vm.newRecord);
+
       vm.user.saveNewRecord(vm.newRecord, vm.currentUser._id)
 
       .then(function(data) {
@@ -71,7 +73,9 @@
       .catch(function(data, status, headers, config) {
         $log.debug("Fail", data, status, headers, config);
       });
+      getAllRecords();
     }
+
     function getCurrentUser() {
       vm.user.currentUserData()
 
@@ -85,24 +89,14 @@
 
     //get all users records to display on home/landing page
     function getAllRecords() {
-      if (vm.currentUser) {
-        getCurrentUser()
-        vm.user.allRecords()
-        .then(function(data) {
-          vm.allRecords = data.data;
-        })
-        .catch(function(data, status, headers, config) {
-          $log.debug("Success:", data,status,headers,config)
-        });
-      } else {
-          vm.user.allRecords()
-          .then(function(data) {
-            vm.allRecords = data.data;
-          })
-          .catch(function(data, status, headers, config) {
-            $log.debug("Success:", data,status,headers,config)
-          });
-        }
+
+      vm.user.allRecords()
+      .then(function(data) {
+        vm.allRecords = data.data;
+      })
+      .catch(function(data, status, headers, config) {
+        $log.debug("Success:", data,status,headers,config)
+      });
     }
 
     function createUser() {

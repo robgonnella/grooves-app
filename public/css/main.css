@@ -20,9 +20,16 @@ header {
   color: blueviolet;
 }
 
-#search {
-  width: 75%;
+#search1 {
+  width: 35%;
   margin: 0 auto;
+  display: inline-block;
+}
+
+#search2 {
+  width: 35%;
+  margin: 0 auto;
+  display: inline-block;
 }
 
 #cart {
@@ -84,16 +91,28 @@ img {
 }
 #single-record-view {
   text-align:left;
-  height: 700px;
-  min-width: 100px;
   border-radius: 15px;
   background-color: rgba(255,255,255, .7);
+  padding: 25px;
 }
 
 #record-image {
-  min-height: 300px;
-  min-width: 300px;
-  float: left;
+  max-height: 300px;
+  max-width: 300px;
+  margin: 0 50px 0 0;
+  display: inline-block;
+}
+
+#record-info {
+  text-align: center;
+  display: inline-block;
+  max-height: 300px;
+  max-width: 300px;
+  position: relative;
+}
+
+#record-view-addcart {
+  text-align: center;
 }
 
 .record-form {
