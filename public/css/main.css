@@ -68,10 +68,6 @@ img {
   max-height: 75px;
   max-width: 75px;
 }
-#prince {
-  min-height: 1000px;
-  min-width: 700px;
-}
 
 .all-records {
   cursor: pointer;
@@ -87,9 +83,17 @@ img {
   cursor: pointer;
 }
 #single-record-view {
-  height: 6000px;
+  text-align:left;
+  height: 700px;
   min-width: 100px;
+  border-radius: 15px;
   background-color: rgba(255,255,255, .7);
+}
+
+#record-image {
+  min-height: 300px;
+  min-width: 300px;
+  float: left;
 }
 
 .record-form {

@@ -32,8 +32,7 @@
     };
 
     function selectRecord (record) {
-      vm.selectedRecord = angular.fromJson(record);
-      vm.addFormEdit = true;
+      vm.selectedRecord = record;
     };
 
     function deleteRecord (record) {

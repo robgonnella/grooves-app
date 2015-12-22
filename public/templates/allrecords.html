@@ -1,9 +1,10 @@
 <div class="all-records" ng-repeat="record in vm.allRecords | filter: vm.search">
   <div class="single-record">
-    <img ui-sref="record" ng-click="vm.selectRecord()" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
+    <img ui-sref="record" ng-click="vm.selectRecord(record)" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
     <p>{{record.artist}}</p>
     <p>{{record.album || "-" }}</p>
     <p>${{record.price}}</p>
+    <p ng-bind="record.label" ng-hide="true"></p>
     <a class="btn btn-default">Add to Cart</a>
   </div>
 </div>
