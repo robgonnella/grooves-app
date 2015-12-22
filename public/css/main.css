@@ -1,3 +1,6 @@
+header {
+  position: absolute;
+}
 .navbar{
   color: lightgray;
   padding-left: 200px;
@@ -15,6 +18,11 @@
 }
 #navcontents h1:hover {
   color: blueviolet;
+}
+
+#search {
+  width: 75%;
+  margin: 0 auto;
 }
 
 #cart {
@@ -106,4 +114,5 @@ img {
 .add-form {
   width: 15px;
 }
+
 

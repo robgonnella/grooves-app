@@ -27,14 +27,13 @@
         </div>
         <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
         <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>
-        <div id="logged-in">
-          <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.getCurrentUser()" ui-sref="account">Account</a>
-          <a class="btn btn-danger" ui-sref="home" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
-        </div>
+        <a class="btn btn-default" ng-show="vm.auth.isLoggedIn" ng-click="vm.getCurrentUser()" ui-sref="account">Account</a>
+        <a class="btn btn-danger" ui-sref="home" ng-show="vm.auth.isLoggedIn" ng-click="vm.auth.logOut(); vm.message = ''">Log Out</a>
       </div>
-
       <br>
     </header>
+
+    <input id="search" class="form-control input-lg" type="text" placeholder="search">
 
     <main class="container-fluid">
       <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
@@ -48,13 +47,13 @@
         </fieldset>
       </form>
 
-      <form id="token" ng-show="vm.login && !vm.signUp" ng-submit="vm.logInUser(); vm.login = false; vm.getCurrentUser()">
+      <form id="token" ng-show="vm.login && !vm.signUp" ng-submit="vm.logInUser()">
         <h4>Log In User</h4>
         <fieldset class="pure-group center">
           <input  type="email"           ng-model="vm.auth.email"     ng-disabled="vm.auth.isLoggedIn" class="email" placeholder="user@domain.com">
           <input  type="password"        ng-model="vm.auth.password"  ng-disabled="vm.auth.isLoggedIn" class="password" placeholder="secretpassword"> <br><br>
           <a class="btn btn-danger"      ng-click="vm.login = false; vm.message = ''">Cancel</a>
-          <button type="submit" ui-sref="account" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" ng-click="vm.login = false">Submit</button>
         </fieldset>
       </form>
 
