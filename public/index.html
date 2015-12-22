@@ -33,7 +33,7 @@
       <br>
     </header>
 
-    <input id="search" class="form-control input-lg" type="text" placeholder="search">
+    <input id="search" class="form-control input-lg" ng-model="vm.search" type="text" placeholder="search">
 
     <main class="container-fluid">
       <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
