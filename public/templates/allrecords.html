@@ -6,6 +6,6 @@
     <p ng-bind="'$' + record.price"></p>
     <p ng-bind="record.label" ng-hide="true"></p>
     <p ng-bind="record.year" ng-hide="true"></p>
-    <a class="btn btn-primary">Add to Cart</a>
+    <a class="btn btn-primary" ng-click="vm.addToCart(record)">Add to Cart</a>
   </div>
 </div>

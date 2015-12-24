@@ -22,8 +22,7 @@
         <h1 ui-sref="home" ng-click="vm.allRecords">Grüv</h1>
         <div ng-controller="CartController as vm">
           <img id="cart" ng-src="assets/empty-cart-light.png" ui-sref="cart"></img>
-          <p id="cart-total">= {{vm.cart.list.length}} items<p>
-          <p ng-bind="vm.list.length"></p>
+          <p id="cart-total" ng-bind="' : ' + vm.list.length"></p>
         </div>
         <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.signUp = !vm.login">Sign Up</a>
         <a class="btn btn-default loginSignUp" ng-hide="vm.auth.isLoggedIn" ng-click="vm.login = !vm.signUp">Login</a>

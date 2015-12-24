@@ -8,12 +8,14 @@
   cartDataService.$inject = ["$log", '$window'];
 
   function cartDataService ($log, $window) {
-    this.list = [];
+
+    var list = [];
+    $log.debug(list);
 
     var cart = {
       add: add,
       remove: remove,
-      list: this.list
+      list: list
     };
 
     deserialize();
@@ -22,25 +24,26 @@
 
 
     function add (item) {
-      this.list.push(item);
+      cart.list.push(item);
       serialize();
     }
 
     function remove (item) {
-      this.list = this.list.filter(function (filteredItem) {
+      cart.list = cart.list.filter(function (filteredItem) {
         return filteredItem._id != item._id
       });
       serialize();
     }
 
     function serialize() {
-      $window.localStorage.setItem('gruvCart', angular.toJson(this.list));
+      $window.localStorage.setItem('gruvCart', angular.toJson(cart.list));
     }
 
     function deserialize() {
       var savedCart = $window.localStorage.getItem('gruvCart');
+      console.log(savedCart);
       if(savedCart) {
-        this.list = angular.fromJson(savedCart);
+        cart.list = angular.fromJson(savedCart);
       }
     }
   }

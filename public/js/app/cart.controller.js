@@ -11,8 +11,8 @@
     var vm = this;
 
     vm.cart = cartDataService;
-    vm.list = cart.list;
-    vm.remove = cart.remove;
+    vm.list = vm.cart.list;
+    vm.remove = vm.cart.remove;
 
   }
 
