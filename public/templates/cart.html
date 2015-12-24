@@ -1,1 +1,23 @@
-cart.html
+<br>
+<div id="cart-view">
+  <h1> Welcome to Your Grüv Cart! </h1>
+  <br>
+  <div ng-controller="CartController as vm">
+  <table class="table">
+    <thead>
+    <th>Artist</th>
+    <th>Album</th>
+    <th>Price</th>
+    </thead>
+    <tr ng-repeat="item in vm.list">
+      <td ng-bind="item.artist"></td>
+      <td ng-bind="item.album"></td>
+      <td ng-bind="'$' + item.price"></td>
+      <td class="btn btn-danger" ng-click="vm.remove(item)">x</td>
+    </tr>
+    <tr>
+      <td colspan="2">Total:</td>
+      <td colspan="2" ng-bind="'$' + vm.total"></td>
+    </tr>
+  </table>
+</div>

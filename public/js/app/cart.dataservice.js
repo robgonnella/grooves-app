@@ -10,7 +10,6 @@
   function cartDataService ($log, $window) {
 
     var list = [];
-    $log.debug(list);
 
     var cart = {
       add: add,
@@ -41,7 +40,6 @@
 
     function deserialize() {
       var savedCart = $window.localStorage.getItem('gruvCart');
-      console.log(savedCart);
       if(savedCart) {
         cart.list = angular.fromJson(savedCart);
       }

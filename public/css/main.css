@@ -138,4 +138,14 @@ img {
   width: 15px;
 }
 
+#cart-view {
+  text-align:left;
+  border-radius: 15px;
+  background-color: rgba(255,255,255, .7);
+  padding: 25px;
+}
+
+#cart-view h1 {
+  text-align: center;
+}
 
