@@ -9,15 +9,15 @@
     <th>Album</th>
     <th>Price</th>
     </thead>
-    <tr ng-repeat="item in vm.list">
+    <tr ng-repeat="item in vm.cart.list">
       <td ng-bind="item.artist"></td>
       <td ng-bind="item.album"></td>
       <td ng-bind="'$' + item.price"></td>
-      <td class="btn btn-danger" ng-click="vm.remove(item)">x</td>
+      <td class="btn btn-danger" ng-click="vm.remove(item); item.hide=false">x</td>
     </tr>
     <tr>
       <td colspan="2">Total:</td>
-      <td colspan="2" ng-bind="'$' + vm.total"></td>
+      <td colspan="2" ng-bind="'$' + vm.total()"></td>
     </tr>
   </table>
 </div>

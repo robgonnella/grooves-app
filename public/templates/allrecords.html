@@ -1,4 +1,4 @@
-<div class="all-records" ng-repeat="record in vm.allRecords | filter: vm.search1 | filter: vm.search2">
+<div class="all-records" ng-hide="record.hide" ng-repeat="record in vm.allRecords | filter: vm.search1 | filter: vm.search2">
   <div class="single-record">
     <img ui-sref="record" ng-click="vm.selectRecord(record)" ng-src="{{record.image || '/assets/45_rpm_record.png'}}"></img>
     <p ng-bind="record.artist"></p>
@@ -6,6 +6,6 @@
     <p ng-bind="'$' + record.price"></p>
     <p ng-bind="record.label" ng-hide="true"></p>
     <p ng-bind="record.year" ng-hide="true"></p>
-    <a class="btn btn-primary" ng-click="vm.addToCart(record)">Add to Cart</a>
+    <a class="btn btn-primary" ng-click="vm.addToCart(record); record.hide=true">Add to Cart</a>
   </div>
 </div>
