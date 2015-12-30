@@ -33,6 +33,13 @@ var show = function(req, res, next){
   });
 };
 
+var userRecords = function (req, res, next) {
+  User.findById(req.params.id, function(error, user) {
+    if (error) res.json({message: 'Could not find user because ' + error});
+    res.json(user.records);
+  });
+}
+
 var updateRecord = function (req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if(error) console.log(error);
@@ -69,7 +76,7 @@ var showRecord = function (req, res, next) {
         res.json(record);
       }
     });
-  })
+  });
 }
 
 var addRecord = function(req, res, next) {
@@ -101,6 +108,7 @@ module.exports = {
   create:        create,
   show:          show,
   showRecord:    showRecord,
+  userRecords:   userRecords,
   addRecord:     addRecord,
   getAllRecords: getAllRecords,
   updateRecord:  updateRecord,
