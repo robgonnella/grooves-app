@@ -65,7 +65,6 @@ var showRecord = function (req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if (error) res.json({message: 'Could not find user because ' + error});
     user.records.forEach(function (record) {
-      eval(locus);
       if (record._id === req.params.record_id) {
         res.json(record);
       }
@@ -101,6 +100,7 @@ module.exports = {
   index: index,
   create: create,
   show:  show,
+  showRecord: showRecord,
   addRecord: addRecord,
   getAllRecords: getAllRecords,
   updateRecord:  updateRecord,
