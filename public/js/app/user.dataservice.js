@@ -28,10 +28,10 @@
     function deleteRecord (record, userId) {
       $log.debug(record)
       return $http({
-        url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
+        url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id+"/d",
         headers: {"Content-Type": "application/json"},
-        method: "DELETE",
-        data: angular.toJson({record: record})
+        method: "PUT",
+        data: angular.toJson({})
       })
     }
 
