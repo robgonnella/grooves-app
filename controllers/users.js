@@ -61,6 +61,18 @@ var show = function(req, res, next){
   });
 };
 
+var showRecord = function (req, res, next) {
+  User.findById(req.params.id, function(error, user) {
+    if (error) res.json({message: 'Could not find user because ' + error});
+    user.records.forEach(function (record) {
+      eval(locus);
+      if (record._id === req.params.record_id) {
+        res.json(record);
+      }
+    });
+  })
+}
+
 var addRecord = function(req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if(error) res.json({message: 'Could not find user because ' + error});
