@@ -66,7 +66,7 @@ var showRecord = function (req, res, next) {
     if (error) res.json({message: 'Could not find user because ' + error});
     user.records.forEach(function (record) {
       if (record._id === req.params.record_id) {
-        res.json(record);
+        res.json({record: record});
       }
     });
   })
