@@ -62,6 +62,7 @@ var show = function(req, res, next){
 };
 
 var showRecord = function (req, res, next) {
+  eval(locus);
   User.findById(req.params.id, function(error, user) {
     if (error) res.json({message: 'Could not find user because ' + error});
     user.records.forEach(function (record) {
