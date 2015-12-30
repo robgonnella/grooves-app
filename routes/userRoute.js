@@ -8,10 +8,10 @@ module.exports = function(app, errorHandler) {
 
   app.get('/api/users', usersController.index);
   app.get('/api/users/:id', usersController.show);
-  app.get('/api/records', usersController.getAllRecords);
-  app.post('/api/users/:id/records', usersController.addRecord);
   app.get('/api/users/:id/records', usersController.userRecords);
   app.get('/api/users/:id/records/:record_id', usersController.showRecord);
+  app.get('/api/records', usersController.getAllRecords);
+  app.post('/api/users/:id/records', usersController.addRecord);
   app.put('/api/users/:id/records/:record_id', usersController.updateRecord);
   app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
 
