@@ -5,39 +5,30 @@
 <form id="add-record" class="record-form" ng-show="vm.addForm" ng-submit="vm.addRecord()">
   <h4>Enter Record Info Below</h4>
   <fieldset class="pure-group center">
-
     <div class="add-form">
       <label for="exampleInputName2">Artist</label>
       <input ng-model="vm.newRecord.artist" placeholder="Artist">
     </div>
-
     <div class="add-form">
       <label for="exampleInputName2">Album</label>
       <input ng-model="vm.newRecord.album" placeholder="Album"> <br>
     </div>
-
     <div class="add-form">
       <label for="exampleInputName2">Year</label>
       <input ng-model="vm.newRecord.year" placeholder="Year">
     </div>
-
     <div class="add-form">
       <label for="exampleInputName2">Label</label>
       <input ng-model="vm.newRecord.label" placeholder="Label">
     </div>
-
     <div class="add-form">
       <label for="exampleInputName2">Price</label>
       <input ng-model="vm.newRecord.price" placeholder="Price"><br>
     </div class="add-form">
-
     <label for="exampleInputName2">Description</label>
-      <textarea ng-model="vm.newRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
-
+    <textarea ng-model="vm.newRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
     <br>
-
     <a class="btn btn-danger" ng-click="vm.addForm = false">Cancel</a>
-
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
 </form>
