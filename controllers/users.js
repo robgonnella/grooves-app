@@ -26,8 +26,14 @@ var create = function (req, res, next) {
   });
 };
 
-var updateRecord = function (req, res, next) {
+var show = function(req, res, next){
+  User.findById(req.params.id, function(error, user){
+    if (error) res.json({message: 'Could not find user because ' + error});
+    res.send({user: user});
+  });
+};
 
+var updateRecord = function (req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if(error) console.log(error);
     user.records = user.records.filter(function(record) {
@@ -54,20 +60,13 @@ var getAllRecords = function(req, res, next) {
   });
 };
 
-var show = function(req, res, next){
-  User.findById(req.params.id, function(error, user){
-    if (error) res.json({message: 'Could not find user because ' + error});
-    res.send({user: user});
-  });
-};
 
 var showRecord = function (req, res, next) {
-  eval(locus);
   User.findById(req.params.id, function(error, user) {
     if (error) res.json({message: 'Could not find user because ' + error});
     user.records.forEach(function (record) {
       if (record._id === req.params.record_id) {
-        res.json({record: record});
+        res.json(record);
       }
     });
   })
@@ -98,11 +97,11 @@ var destroyRecord = function(req, res, next) {
 };
 
 module.exports = {
-  index: index,
-  create: create,
-  show:  show,
-  showRecord: showRecord,
-  addRecord: addRecord,
+  index:         index,
+  create:        create,
+  show:          show,
+  showRecord:    showRecord,
+  addRecord:     addRecord,
   getAllRecords: getAllRecords,
   updateRecord:  updateRecord,
   destroyRecord: destroyRecord
