@@ -14,7 +14,8 @@
     vm.getCurrentUser = getCurrentUser;
     vm.auth = authService;
     vm.message = "";
-    vm.allRecords = getAllRecords();
+    vm.getAllRecords = getAllRecords;
+    vm.allRecords = [];
     vm.createUser = createUser;
     vm.logInUser = logInUser;
     vm.addToCart = cartDataService.add;
@@ -30,6 +31,11 @@
       price:  "",
       description: ""
     };
+
+    getAllRecords();
+
+    getCurrentUser();
+
 
     function selectRecord (record) {
       vm.selectedRecord = record;

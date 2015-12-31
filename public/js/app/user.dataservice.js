@@ -59,7 +59,7 @@
       return $http({
         url: "https://agile-lowlands-5230.herokuapp.com/api/records",
         method: 'GET'
-      });
+      })
     }
 
 
@@ -90,7 +90,7 @@
       return $http({
         url:     "https://agile-lowlands-5230.herokuapp.com/api/me",
         method:  "GET"
-      });
+      })
     }
   }
 
