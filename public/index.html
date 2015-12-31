@@ -19,7 +19,7 @@
 <body ng-controller="MainController as vm">
     <header class=" container-fluid navbar">
       <div id="navcontents">
-        <h1 ui-sref="home" ng-click="vm.allRecords">Grüv</h1>
+        <h1 ui-sref="home" ng-click="vm.getAllRecords()">Grüv</h1>
         <div ng-controller="CartController as vm">
           <img id="cart" ng-src="assets/empty-cart-light.png" ui-sref="cart"></img>
           <p id="cart-total" ng-bind="' : ' + vm.cart.list.length"></p>

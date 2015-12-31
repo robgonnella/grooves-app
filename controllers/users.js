@@ -26,13 +26,17 @@ var create = function (req, res, next) {
   });
 };
 
-var updateRecord = function (req, res, next) {
+var show = function(req, res, next){
+  User.findById(req.params.id, function(error, user){
+    if (error) res.json({message: 'Could not find user because ' + error});
+    res.send({user: user});
+  });
+};
 
+
+var addRecord = function(req, res, next) {
   User.findById(req.params.id, function(error, user) {
-    if(error) console.log(error);
-    user.records = user.records.filter(function(record) {
-      return record._id != req.params.record_id
-    });
+    if(error) res.json({message: 'Could not find user because ' + error});
     user.records.push(req.body.record);
     user.save(function (error, user) {
       if(error) res.json({message: 'Could not find user because ' + error});
@@ -54,28 +58,13 @@ var getAllRecords = function(req, res, next) {
   });
 };
 
-var show = function(req, res, next){
-  User.findById(req.params.id, function(error, user){
-    if (error) res.json({message: 'Could not find user because ' + error});
-    res.send({user: user});
-  });
-};
+var updateRecord = function (req, res, next) {
 
-var showRecord = function (req, res, next) {
   User.findById(req.params.id, function(error, user) {
-    if (error) res.json({message: 'Could not find user because ' + error});
-    user.records.forEach(function (record) {
-      eval(locus);
-      if (record._id === req.params.record_id) {
-        res.json(record);
-      }
+    if(error) console.log(error);
+    user.records = user.records.filter(function(record) {
+      return record._id != req.params.record_id
     });
-  })
-}
-
-var addRecord = function(req, res, next) {
-  User.findById(req.params.id, function(error, user) {
-    if(error) res.json({message: 'Could not find user because ' + error});
     user.records.push(req.body.record);
     user.save(function (error, user) {
       if(error) res.json({message: 'Could not find user because ' + error});
@@ -98,10 +87,10 @@ var destroyRecord = function(req, res, next) {
 };
 
 module.exports = {
-  index: index,
-  create: create,
-  show:  show,
-  addRecord: addRecord,
+  index:         index,
+  create:        create,
+  show:          show,
+  addRecord:     addRecord,
   getAllRecords: getAllRecords,
   updateRecord:  updateRecord,
   destroyRecord: destroyRecord
