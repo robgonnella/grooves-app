@@ -4,7 +4,7 @@
 
 Vinyl record sales have continued to increase steadily over the past 10 years showing that it is more than just a short lived trend. Vinyl is here to stay. A recent [article](http://www.theverge.com/2015/9/28/9408233/vinyl-sales-ad-supported-streaming-riaa-2015-report) by The Verge has figures showing vinyl sales surpassing ad-supported streaming in 2015.
 
-Grüv will function as a safe reliable marketplace for used vinyl sales. Many vinyl enthusiasts have taken an interest purely for the listening pleasure and not as collectors. This will be the main demographic targeted. These audiphiles often buy the bulk of their collection from used bins at flea markets and other second-hand resources with only a small portion coming from new pressings or high end collectables. 
+Grüv will function as a safe reliable marketplace for used vinyl sales. Many vinyl enthusiasts have taken an interest purely for the listening pleasure and not as collectors. This will be the main targetted demographic. These audiphiles often buy the bulk of their collection from used bins at flea markets and other second-hand resources with only a small portion coming from new pressings or high end collectables. 
 
 The prices on used vinyl range from $0.50 to around $35 with the majority falling in a $5-$10 range. Low shipping costs and the affordablility of used records make Grüv an ideal app to connect audiophiles with flea market vendors accross the world and further an existing marketplace.
 
