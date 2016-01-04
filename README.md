@@ -35,10 +35,12 @@ A connection through the Discogs API will also give access to brand new records 
 * Filter needs to be applied to Artist and Album title lengths to keep the look clean and consistent
 * Image Uploaded not implemented yet
 * Error messages to user for unauthorized actions needs to be displayed 
-* When added to cart, fade record out instead of disappearing instantly
+* When added to cart, slower fade-out of record instead of disappearing instantly
+* After signing up go straight to seller's account page
 
 ### Layout
 
-![Home Page](https://i.imgur.com/844bZZO.jpg)
+![Home Page](https://i.imgur.com/e8zaGIh.png)
 ![Account Page](https://i.imgur.com/7b0XDzb.png)
 ![Cart](https://i.imgur.com/DtXftjK.png)
+![Paypal](https://i.imgur.com/AscllYq.png)
