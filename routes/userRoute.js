@@ -12,7 +12,6 @@ module.exports = function(app, errorHandler) {
   app.post('/api/users/:id/records', usersController.addRecord);
   app.put('/api/users/:id/records/:record_id', usersController.updateRecord);
   app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
-  app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
 
   app.post('/api/users',
     // validations
