@@ -38,6 +38,9 @@ A connection through the Discogs API will also give access to brand new records 
 * When added to cart, slower fade-out of record instead of disappearing instantly
 * After signing up go straight to seller's account page
 
+### API Documentation
+![](https://i.imgur.com/D4IDWNf.png)
+
 ### Layout
 
 ![Home Page](https://i.imgur.com/e8zaGIh.png)
