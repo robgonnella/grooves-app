@@ -33,6 +33,7 @@ var show = function(req, res, next){
   });
 };
 
+
 var addRecord = function(req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if(error) res.json({message: 'Could not find user because ' + error});
@@ -58,6 +59,7 @@ var getAllRecords = function(req, res, next) {
 };
 
 var updateRecord = function (req, res, next) {
+
   User.findById(req.params.id, function(error, user) {
     if(error) console.log(error);
     user.records = user.records.filter(function(record) {
