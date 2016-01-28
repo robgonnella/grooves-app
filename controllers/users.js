@@ -62,10 +62,24 @@ var updateRecord = function (req, res, next) {
 
   User.findById(req.params.id, function(error, user) {
     if(error) console.log(error);
-    user.records = user.records.filter(function(record) {
-      return record._id != req.params.record_id
+    user.records.forEach(function(record) {
+      if ( record._id == req.params.record_id ) {
+        if (record.artist !== req.body.record.artist) {
+          record.artist = req.body.record.artist;
+        } else if (record.album !== req.body.record.album){
+            record.album = req.body.record.album;
+        } else if (record.year !== req.body.record.year){
+            record.year = req.body.record.year;
+        } else if (record.label !== req.body.record.label) {
+            record.label = req.body.record.label;
+        } else if (record.price !== req.body.record.price) {
+            record.price = req.body.record.price;
+        } else if (record.description !== req.body.record.description) {
+            record.description = req.body.record.description;
+        }
+        return record;
+      }
     });
-    user.records.push(req.body.record);
     user.save(function (error, user) {
       if(error) res.json({message: 'Could not find user because ' + error});
       res.json(user);
