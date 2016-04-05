@@ -55,7 +55,7 @@
     }
 
     function get_signed_request(file, user, record){
-      $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
+      $http.get("http://localhost:3000/sign_s3?file_name="+file.name+"&file_type="+file.type)
       .then(function(data){
         var response = angular.fromJson(data.data);
         $log.debug("RESPONSE -->", response)
@@ -67,22 +67,6 @@
         alert("Could not get signed URL.");
       });
     }
-
-    // function uploadFile(file, signed_request, url, user, record){
-    //   console.log("FILE -->", file)
-    //   $http({
-    //     method: 'PUT',
-    //     url: signed_request,
-    //     data: file
-    //   })
-    //   .then(function(data){
-    //     saveUrlInUserImageArray(user, record, url);
-    //   })
-    //   .catch(function(data, status, headers, config){
-    //     $log.debug("Fail", data, status, headers, config);
-    //     alert("Could not upload file.");
-    //   });
-    // }
 
     function uploadFile(file, signed_request, url, user, record){
       var xhr = new XMLHttpRequest();
@@ -96,20 +80,25 @@
       };
       xhr.onerror = function() {
           alert("Could not upload file.");
-          process.exit();
       };
-      xhr.send(file);
-      saveUrlInUserImageArray(user, record, url);
+      xhr.send(file, function(err){
+        if( err ) console.error("ERROR -->", err)
+        console.log("Succesfully Uploaded to S3")
+        saveUrlInUserImageArray(user, record, url);
+      });
   }
 
     function saveUrlInUserImageArray(user, record, url){
       $http({
         method: "PUT",
-        url: "https://agile-lowlands-5230.herokuapp.com/submit",
+        url: "http://localhost:3000/submit",
         data: { user: user, record: record, image_url: url }
       })
       .then(function(data){
         console.log("DATA -->", data)
+        alert("Successfully saved to DB!")
+        vm.uploade = false;
+        getAllRecords();
       })
       .catch(function(data, status, headers, config){
         console.log("Failed to save image to User/Record Image Array")
