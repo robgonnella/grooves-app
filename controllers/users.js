@@ -109,6 +109,7 @@ var uploadImage = function(req, res, next){
     user.records.forEach(function(record){
       if ( record._id == recordId ){
         record.images.push(recordUrl);
+        record.current_image = recordUrl;
         return;
       }
     });

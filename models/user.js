@@ -5,15 +5,16 @@ var mongoose = require('mongoose'),
 mongoose.Promise = Promise;
 
 var recordSchema = new mongoose.Schema({
-  artist:      String,
-  album:       String,
-  genre:       String,
-  year:        String,
-  images:       Array,
-  label:       String,
-  condition:   String,
-  description: String,
-  price:       Number
+  artist:        String,
+  album:         String,
+  genre:         String,
+  year:          String,
+  images:        Array,
+  current_image: String,
+  label:         String,
+  condition:     String,
+  description:   String,
+  price:         Number
 });
 
 var userSchema = new mongoose.Schema({
