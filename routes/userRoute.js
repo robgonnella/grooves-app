@@ -25,7 +25,7 @@ module.exports = function(app, errorHandler) {
           Bucket: S3_BUCKET,
           Key: req.query.file_name,
           ContentType: req.query.file_type,
-          ACL: 'public-read'
+          ACL: 'public-read-write'
       };
       s3.getSignedUrl('putObject', s3_params, function(err, url){
           if(err){
