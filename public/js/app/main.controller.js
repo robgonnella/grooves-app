@@ -84,7 +84,7 @@
     //   });
     // }
 
-    function uploadFile(file, signed_request, url){
+    function uploadFile(file, signed_request, url, user, record){
       var xhr = new XMLHttpRequest();
       xhr.open("PUT", signed_request);
       xhr.setRequestHeader('x-amz-acl', 'public-read');
