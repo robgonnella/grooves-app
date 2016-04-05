@@ -28,7 +28,7 @@
     function deleteRecord (record, userId) {
       $log.debug(record)
       return $http({
-        url: "http://localhost:3000/api/users/"+userId+"/records/"+record._id,
+        url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
         headers: {"Content-Type": "application/json"},
         method: "DELETE",
         data: angular.toJson({record: record})
@@ -38,7 +38,7 @@
     function updateRecord (record, userId) {
       $log.debug(record);
       return $http({
-        url:     "http://localhost:3000/api/users/"+userId+"/records/"+record._id,
+        url:     "https://agile-lowlands-5230.herokuapp.com/api/users/"+userId+"/records/"+record._id,
         method:  "PUT",
         headers: {"Content-Type": "application/json"},
         data:    angular.toJson({record:record})
@@ -48,7 +48,7 @@
 
     function saveNewRecord (record, id) {
       return $http ({
-        url: "http://localhost:3000/api/users/"+id+"/records",
+        url: "https://agile-lowlands-5230.herokuapp.com/api/users/"+id+"/records",
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         data: angular.toJson({record:record})
@@ -57,7 +57,7 @@
 
     function allRecords() {
       return $http({
-        url: "http://localhost:3000/api/records",
+        url: "https://agile-lowlands-5230.herokuapp.com/api/records",
         method: 'GET'
       })
     }
@@ -67,7 +67,7 @@
       $log.debug("Attempting to create:", user);
 
       return $http({
-        url:     "http://localhost:3000/api/users",
+        url:     "https://agile-lowlands-5230.herokuapp.com/api/users",
         method:  "POST",
         headers: {"Content-Type": "application/json"},
         data: angular.toJson({
@@ -88,7 +88,7 @@
       $log.debug("Retrieving current user data.");
 
       return $http({
-        url:     "http://localhost:3000/api/me",
+        url:     "https://agile-lowlands-5230.herokuapp.com/api/me",
         method:  "GET"
       })
     }
