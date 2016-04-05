@@ -50,38 +50,57 @@
       if(file == null){
         alert("No file selected.");
       } else{
-          uploadFile(file, user, record);
+          get_signed_request(file, user, record);
         }
     }
 
-    // function get_signed_request(file, user, record){
-    //   $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
-    //   .then(function(data){
-    //     var response = angular.fromJson(data.data);
-    //     $log.debug("RESPONSE -->", response)
-    //     uploadFile(file, response.signed_request, response.image_url, user, record)
-
-    //   })
-    //   .catch(function(data, status, headers, config){
-    //     $log.debug("Fail", data, status, headers, config);
-    //     alert("Could not get signed URL.");
-    //   });
-    // }
-
-    function uploadFile(file, user, record){
-      $http({
-        method: 'PUT',
-        url: "https://agile-lowlands-5230.herokuapp.com/upload",
-        data: file
-      })
+    function get_signed_request(file, user, record){
+      $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
       .then(function(data){
-        saveUrlInUserImageArray(user, record, url);
+        var response = angular.fromJson(data.data);
+        $log.debug("RESPONSE -->", response)
+        uploadFile(file, response.signed_request, response.image_url, user, record)
+
       })
       .catch(function(data, status, headers, config){
         $log.debug("Fail", data, status, headers, config);
-        alert("Could not upload file.");
+        alert("Could not get signed URL.");
       });
     }
+
+    // function uploadFile(file, signed_request, url, user, record){
+    //   console.log("FILE -->", file)
+    //   $http({
+    //     method: 'PUT',
+    //     url: signed_request,
+    //     data: file
+    //   })
+    //   .then(function(data){
+    //     saveUrlInUserImageArray(user, record, url);
+    //   })
+    //   .catch(function(data, status, headers, config){
+    //     $log.debug("Fail", data, status, headers, config);
+    //     alert("Could not upload file.");
+    //   });
+    // }
+
+    function uploadFile(file, signed_request, url){
+      var xhr = new XMLHttpRequest();
+      xhr.open("PUT", signed_request);
+      xhr.setRequestHeader('x-amz-acl', 'public-read');
+      xhr.onload = function() {
+          if (xhr.status === 200) {
+              document.getElementById("preview").src = url;
+              document.getElementById("avatar_url").value = url;
+          }
+      };
+      xhr.onerror = function() {
+          alert("Could not upload file.");
+          process.exit();
+      };
+      xhr.send(file);
+      saveUrlInUserImageArray(user, record, url);
+  }
 
     function saveUrlInUserImageArray(user, record, url){
       $http({
