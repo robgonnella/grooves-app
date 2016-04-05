@@ -104,7 +104,7 @@ var uploadImage = function(req, res, next){
   User.findById(req.body.user._id, function(err, user){
     if ( err ) res.json({ message: 'Could not find user because ' + error });
 
-    var recordUrl = req.body.image_url.replace(/https:\/\//gmi, "");
+    var recordUrl = req.body.image_url;
     var recordId = req.body.record._id;
     user.records.forEach(function(record){
       if ( record._id == recordId ){
