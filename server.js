@@ -24,14 +24,13 @@ app.set('secret-key', env.SECRET_KEY);
 app.locals.title = app.get('title');
 
 
-
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin',  '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
 
   if ('OPTIONS' == req.method) {
-    res.send(200);
+    res.sendStatus(200);
   } else {
     next();
   }
@@ -92,6 +91,7 @@ require('./routes/tokenRoute')(app, errorHandler);
 
 // Authorized resource route (GET /me)
 require('./routes/meRoute')(app, errorHandler);
+
 
 // Catches all 404 routes.
 app.use(function(req, res, next) {

@@ -1,7 +1,7 @@
 <br>
 <div id="single-record-view">
   <br>
-  <img id="record-image" ng-src="{{vm.selectedRecord.image || '/assets/45_rpm_record.png'}}">
+  <img id="record-image" ng-src="{{vm.selectedRecord.images[vm.selectedRecord.images.length-1] || vm.defaulRecordImage}}">
   <div id='record-info'>
     <h2>{{vm.selectedRecord.artist}}</h2>
     <h3>{{vm.selectedRecord.album}}</h3>

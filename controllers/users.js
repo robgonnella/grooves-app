@@ -100,6 +100,25 @@ var destroyRecord = function(req, res, next) {
   });
 };
 
+var uploadImage = function(req, res, next){
+  User.findById(req.body.user._id, function(err, user){
+    if ( err ) res.json({ message: 'Could not find user because ' + error });
+
+    var recordUrl = req.body.image_url;
+    var recordId = req.body.record._id;
+    user.records.forEach(function(record){
+      if ( record._id == recordId ){
+        record.images.push(recordUrl);
+        return;
+      }
+    });
+    user.save(function(err, user){
+      if ( err ) res.json({ message: "could not save record image because" + err });
+      res.json(user);
+    });
+  });
+}
+
 module.exports = {
   index:         index,
   create:        create,
@@ -107,5 +126,6 @@ module.exports = {
   addRecord:     addRecord,
   getAllRecords: getAllRecords,
   updateRecord:  updateRecord,
-  destroyRecord: destroyRecord
+  destroyRecord: destroyRecord,
+  uploadImage:   uploadImage
 };

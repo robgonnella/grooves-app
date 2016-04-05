@@ -14,7 +14,12 @@
 
     function signWithToken(request) {
       var token = tokenService.get();
-      if (token) {
+      var match1 = /sign_s3/gmi;
+      var match2 = /s3.amazonaws/gmi
+      var isS3check1 = match1.test(request.url);
+      var isS3check2 = match2.test(request.url);
+      var isS3 = isS3check1 || isS3check2 ? true : false;
+      if (token && !isS3) {
         $log.debug("Token exists; signing request.");
         request.headers['Authorization'] = `Bearer ${token}`;
       }

@@ -5,13 +5,15 @@
     .module("grooves-app")
     .controller("MainController", MainController);
 
-  MainController.$inject = ["userDataService", "authService", "$log", "cartDataService"];
+  MainController.$inject = ["userDataService", "authService", "$log", "$http", "cartDataService"];
 
-  function MainController(userDataService, authService, $log, cartDataService) {
+  function MainController(userDataService, authService, $log, $http, cartDataService) {
 
     var vm = this;
+    vm.defaulRecordImage = './assets/45_rpm_record.png';
     vm.user = userDataService;
     vm.getCurrentUser = getCurrentUser;
+    vm.currentUser = '';
     vm.auth = authService;
     vm.message = "";
     vm.getAllRecords = getAllRecords;
@@ -23,6 +25,7 @@
     vm.updateRecord = updateRecord;
     vm.deleteRecord = deleteRecord;
     vm.selectRecord = selectRecord;
+    vm.uploadImage = uploadImage;
     vm.newRecord = {
       artist: "",
       album:  "",
@@ -40,6 +43,56 @@
     function selectRecord (record) {
       vm.selectedRecord = record;
     };
+
+    function uploadImage(user, record){
+      var files = document.getElementById("file_input").files;
+      var file = files[0];
+      if(file == null){
+        alert("No file selected.");
+      } else{
+          get_signed_request(file, user, record);
+        }
+    }
+
+    function get_signed_request(file, user, record){
+      $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
+      .then(function(data){
+        var response = angular.fromJson(data.data);
+        $log.debug("RESPONSE -->", response)
+        uploadFile(file, response.signed_request, response.image_url, user, record)
+
+      })
+      .catch(function(data, status, headers, config){
+        $log.debug("Fail", data, status, headers, config);
+        alert("Could not get signed URL.");
+      });
+    }
+
+    function uploadFile(file, signed_request, url, user, record){
+      $http.put(signed_request)
+      .then(function(data){
+        saveUrlInUserImageArray(user, record, url);
+      })
+      .catch(function(data, status, headers, config){
+        $log.debug("Fail", data, status, headers, config);
+        alert("Could not upload file.");
+      });
+    }
+
+    function saveUrlInUserImageArray(user, record, url){
+      $http({
+        method: "PUT",
+        url: "https://agile-lowlands-5230.herokuapp.com/submit",
+        data: { user: user, record: record, image_url: url }
+      })
+      .then(function(data){
+        console.log("DATA -->", data)
+      })
+      .catch(function(data, status, headers, config){
+        console.log("Failed to save image to User/Record Image Array")
+        $log.debug("Fail", data, status, headers, config);
+      });
+    }
 
     function deleteRecord (record) {
       vm.user.deleteRecord(record, vm.currentUser._id)

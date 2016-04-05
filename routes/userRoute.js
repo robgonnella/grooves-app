@@ -2,6 +2,10 @@ var moment = require('moment'),
     User   = require('../models/user'),
     usersController = require('../controllers/users');
 
+var aws = require('aws-sdk');
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var S3_BUCKET = process.env.S3_BUCKET;
 // In order to simplify our process, we will handle the request
 // inline here, instead of passing to controller files.
 module.exports = function(app, errorHandler) {
@@ -12,6 +16,35 @@ module.exports = function(app, errorHandler) {
   app.post('/api/users/:id/records', usersController.addRecord);
   app.put('/api/users/:id/records/:record_id', usersController.updateRecord);
   app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
+
+
+  app.get('/sign_s3', function(req, res){
+      aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
+      var s3 = new aws.S3();
+      var s3_params = {
+          Bucket: S3_BUCKET,
+          Key: req.query.file_name,
+          ContentType: req.query.file_type,
+          ACL: 'public-read'
+      };
+      s3.getSignedUrl('putObject', s3_params, function(err, url){
+          if(err){
+              console.log(err);
+          }
+          else{
+            var return_data = {
+                signed_request: url,
+                image_url: 'https://s3-us-west-1.amazonaws.com/'+S3_BUCKET+"/"+req.query.file_name
+            }
+            return res.json(return_data);
+            // res.end();
+          }
+      });
+  });
+
+  app.put('/submit', usersController.uploadImage);
+
+
 
   app.post('/api/users',
     // validations

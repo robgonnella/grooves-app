@@ -9,7 +9,7 @@ var recordSchema = new mongoose.Schema({
   album:       String,
   genre:       String,
   year:        String,
-  image:       String,
+  images:       Array,
   label:       String,
   condition:   String,
   description: String,
