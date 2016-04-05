@@ -18,7 +18,7 @@ module.exports = function(app, errorHandler) {
   app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
 
 
-  app.get('/sign_s3', function(req, res){
+  app.get('/upload', function(req, res){
       aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
       var s3 = new aws.S3();
       var s3_params = {
@@ -27,7 +27,7 @@ module.exports = function(app, errorHandler) {
           ContentType: req.query.file_type,
           ACL: 'public-read-write'
       };
-      s3.getSignedUrl('putObject', s3_params, function(err, url){
+      s3.putObject(s3_params, function(err, url){
           if(err){
               console.log(err);
           }

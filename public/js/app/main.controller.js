@@ -50,29 +50,29 @@
       if(file == null){
         alert("No file selected.");
       } else{
-          get_signed_request(file, user, record);
+          uploadFile(file, user, record);
         }
     }
 
-    function get_signed_request(file, user, record){
-      $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
-      .then(function(data){
-        var response = angular.fromJson(data.data);
-        $log.debug("RESPONSE -->", response)
-        uploadFile(file, response.signed_request, response.image_url, user, record)
+    // function get_signed_request(file, user, record){
+    //   $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
+    //   .then(function(data){
+    //     var response = angular.fromJson(data.data);
+    //     $log.debug("RESPONSE -->", response)
+    //     uploadFile(file, response.signed_request, response.image_url, user, record)
 
-      })
-      .catch(function(data, status, headers, config){
-        $log.debug("Fail", data, status, headers, config);
-        alert("Could not get signed URL.");
-      });
-    }
+    //   })
+    //   .catch(function(data, status, headers, config){
+    //     $log.debug("Fail", data, status, headers, config);
+    //     alert("Could not get signed URL.");
+    //   });
+    // }
 
-    function uploadFile(file, signed_request, url, user, record){
+    function uploadFile(file, user, record){
       $http({
         method: 'PUT',
-        url: signed_request,
-        data: file.name
+        url: "https://agile-lowlands-5230.herokuapp.com/upload",
+        data: file
       })
       .then(function(data){
         saveUrlInUserImageArray(user, record, url);
