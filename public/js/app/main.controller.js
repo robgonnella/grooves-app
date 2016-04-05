@@ -97,7 +97,7 @@
       .then(function(data){
         console.log("DATA -->", data)
         alert("Successfully saved to DB!")
-        vm.uploade = false;
+        vm.upload = false;
         getAllRecords();
       })
       .catch(function(data, status, headers, config){
