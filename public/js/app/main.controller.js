@@ -69,7 +69,11 @@
     }
 
     function uploadFile(file, signed_request, url, user, record){
-      $http.put(signed_request)
+      $http({
+        method: 'PUT',
+        url: signed_request,
+        data: file.name
+      })
       .then(function(data){
         saveUrlInUserImageArray(user, record, url);
       })

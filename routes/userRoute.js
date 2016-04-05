@@ -3,9 +3,9 @@ var moment = require('moment'),
     usersController = require('../controllers/users');
 
 var aws = require('aws-sdk');
-var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-var S3_BUCKET = process.env.S3_BUCKET;
+var AWS_ACCESS_KEY=process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY=process.env.AWS_SECRET_KEY;
+var S3_BUCKET=process.env.S3_BUCKET;
 // In order to simplify our process, we will handle the request
 // inline here, instead of passing to controller files.
 module.exports = function(app, errorHandler) {
