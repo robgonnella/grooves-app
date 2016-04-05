@@ -55,7 +55,7 @@
     }
 
     function get_signed_request(file, user, record){
-      $http.get("http://localhost:3000/sign_s3?file_name="+file.name+"&file_type="+file.type)
+      $http.get("https://agile-lowlands-5230.herokuapp.com/sign_s3?file_name="+file.name+"&file_type="+file.type)
       .then(function(data){
         var response = angular.fromJson(data.data);
         $log.debug("RESPONSE -->", response)
@@ -89,7 +89,7 @@
     function saveUrlInUserImageArray(user, record, url){
       $http({
         method: "PUT",
-        url: "http://localhost:3000/submit",
+        url: "https://agile-lowlands-5230.herokuapp.com/submit",
         data: { user: user, record: record, image_url: url }
       })
       .then(function(data){
