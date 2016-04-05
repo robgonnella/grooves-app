@@ -77,7 +77,7 @@
 
 <div class="user-records" ng-repeat="record in vm.currentUser.records | filter: vm.search1 | filter: vm.search2">
   <div class="single-record" ng-click="vm.selectRecord(record)">
-    <img ui-sref="record" ng-src="{{record.current_image}}">
+    <img ui-sref="record" ng-src="{{vm.defaulRecordImage}}">
     <p ng-bind="record.artist"></p>
     <p ng-bind="record.album || '-'"></p>
     <p ng-bind="'$' + record.price"></p>
