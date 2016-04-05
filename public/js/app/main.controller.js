@@ -81,10 +81,11 @@
       xhr.onerror = function() {
           alert("Could not upload file.");
       };
-      xhr.send(file, function(err){
+      xhr.send(file, function(err, data){
         if( err ) console.error("ERROR -->", err)
         console.log("Succesfully Uploaded to S3")
         saveUrlInUserImageArray(user, record, url);
+        return data;
       });
   }
 
