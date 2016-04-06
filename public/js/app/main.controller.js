@@ -84,16 +84,10 @@
       xhr.open("PUT", signed_request);
       xhr.setRequestHeader('x-amz-acl', 'public-read');
       xhr.onerror = function() {
-        return alert("Could not upload file.");
+        alert("Could not upload file.");
       };
-      xhr.onreadystatechange = function () {
-        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-          console.log(xhr.responseText);
-          alert("Uploaded to S3 successfully!")
-          saveUrlInUserImageArray(user, record, url);
-        }
-      }
       xhr.send()
+      saveUrlInUserImageArray(user, record, url);
     }
 
     function saveUrlInUserImageArray(user, record, url){
