@@ -94,10 +94,10 @@
       try{
         console.log("uploading to S3");
         xhr.send(file)
+        saveUrlInUserImageArray(user, record, url);
       }catch(e){
         console.error(e.stack);
       }
-      // saveUrlInUserImageArray(user, record, url);
     }
 
     function saveUrlInUserImageArray(user, record, url){
