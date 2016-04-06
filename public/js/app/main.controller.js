@@ -91,9 +91,9 @@
       xhr.onerror = function() {
           alert("Could not upload file.");
       };
-      xhr.send()
+      xhr.send(file)
       alert("Uploading to S3!");
-      saveUrlInUserImageArray(user, record, url);
+      // saveUrlInUserImageArray(user, record, url);
     }
 
     function saveUrlInUserImageArray(user, record, url){
