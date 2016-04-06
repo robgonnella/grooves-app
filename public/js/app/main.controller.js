@@ -83,11 +83,11 @@
       var xhr = new XMLHttpRequest();
       xhr.open("PUT", signed_request);
       xhr.setRequestHeader('x-amz-acl', 'public-read');
+      console.log("uploading to S3");
+      xhr.send(file)
       xhr.onload = function() {
           if (xhr.status === 200) {
             console.log("Load Success!")
-            console.log("uploading to S3");
-            xhr.send(file)
             saveUrlInUserImageArray(user, record, url);
           }
       }
