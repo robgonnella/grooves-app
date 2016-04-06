@@ -91,8 +91,12 @@
       xhr.onerror = function() {
           alert("Could not upload file.");
       };
-      xhr.send(file)
-      alert("Uploading to S3!");
+      try{
+        console.log("uploading to S3");
+        xhr.send(file)
+      }catch(e){
+        console.error(e.stack);
+      }
       // saveUrlInUserImageArray(user, record, url);
     }
 
@@ -104,7 +108,7 @@
       })
       .then(function(data){
         console.log("DATA -->", data)
-        alert("Successfully saved to DB!")
+        console.log("Successfully saved to DB!")
         vm.upload = false;
         document.location.reload();
       })
