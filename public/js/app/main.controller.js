@@ -45,7 +45,7 @@
     };
 
     $scope.showPreview = function(input){
-      console.log("WE MADE IT!")
+      // console.log("WE MADE IT!")
       if( input.files && input.files[0] ){
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -83,11 +83,11 @@
       var xhr = new XMLHttpRequest();
       xhr.open("PUT", signed_request);
       xhr.setRequestHeader('x-amz-acl', 'public-read');
-      console.log("uploading to S3");
+      // console.log("uploading to S3");
       xhr.send(file)
       xhr.onload = function() {
           if (xhr.status === 200) {
-            console.log("Load Success!")
+            // console.log("Load Success!")
             saveUrlInUserImageArray(user, record, url);
           }
       }
@@ -103,13 +103,13 @@
         data: { user: user, record: record, image_url: url }
       })
       .then(function(data){
-        console.log("DATA -->", data)
-        console.log("Successfully saved to DB!")
+        // console.log("DATA -->", data)
+        // console.log("Successfully saved to DB!")
         vm.upload = false;
         document.location.reload();
       })
       .catch(function(data, status, headers, config){
-        console.log("Failed to save image to User/Record Image Array")
+        // console.log("Failed to save image to User/Record Image Array")
         $log.debug("Fail", data, status, headers, config);
       });
     }
