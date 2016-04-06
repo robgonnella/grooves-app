@@ -85,19 +85,15 @@
       xhr.setRequestHeader('x-amz-acl', 'public-read');
       xhr.onload = function() {
           if (xhr.status === 200) {
-              console.log("Load Success!")
+            console.log("Load Success!")
+            console.log("uploading to S3");
+            xhr.send(file)
+            saveUrlInUserImageArray(user, record, url);
           }
-      };
-      xhr.onerror = function() {
-          alert("Could not upload file.");
-      };
-      try{
-        console.log("uploading to S3");
-        xhr.send(file)
-        saveUrlInUserImageArray(user, record, url);
-      }catch(e){
-        console.error(e.stack);
       }
+      xhr.onerror = function() {
+          return alert("Could not upload file.");
+      };
     }
 
     function saveUrlInUserImageArray(user, record, url){
