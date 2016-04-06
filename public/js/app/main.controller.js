@@ -96,7 +96,7 @@
         console.log("DATA -->", data)
         alert("Successfully saved to DB!")
         vm.upload = false;
-        getAllRecords();
+        document.location.reload();
       })
       .catch(function(data, status, headers, config){
         console.log("Failed to save image to User/Record Image Array")
