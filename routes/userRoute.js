@@ -34,7 +34,7 @@ module.exports = function(app, errorHandler) {
           else{
             var return_data = {
                 signed_request: url,
-                image_url: 'http://s3.amazonaws.com/'+S3_BUCKET+"/"+req.query.file_name
+                image_url: 'https://s3.amazonaws.com/'+S3_BUCKET+"/"+req.query.file_name
             }
             return res.json(return_data);
             // res.end();
