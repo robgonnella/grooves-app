@@ -87,7 +87,8 @@
         alert("Could not upload file.");
       };
       xhr.send()
-      saveUrlInUserImageArray(user, record, url);
+
+      setTimeout(saveUrlInUserImageArray(user, record, url), 3000);
     }
 
     function saveUrlInUserImageArray(user, record, url){
