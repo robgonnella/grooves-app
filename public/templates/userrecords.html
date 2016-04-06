@@ -65,9 +65,8 @@
 </form>
 
 <div class="record-form" ng-show="vm.upload">
-  <input type="file" id="file_input"/>
-  <p id="status">Please select a file</p>
-  <img id="preview" src="/images/default.png" />
+  <input type="file" id="file_input" ng-model="vm.preview" onchange="angular.element(this).scope().showPreview(this)"/>
+  <img id="preview" src="./assets/45_rpm_record.png" />
   <form method="POST" ng-submit="vm.uploadImage(vm.currentUser, vm.selectedRecord)">
       <input type="hidden" id="avatar_url" name="avatar_url" value="/public/default.png" />
       <input class="btn btn-primary" type="submit" value="Upload" />

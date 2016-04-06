@@ -5,9 +5,9 @@
     .module("grooves-app")
     .controller("MainController", MainController);
 
-  MainController.$inject = ["userDataService", "authService", "$log", "$http", "cartDataService"];
+  MainController.$inject = ["userDataService", "authService", "$log", "$http", "cartDataService", "$scope"];
 
-  function MainController(userDataService, authService, $log, $http, cartDataService) {
+  function MainController(userDataService, authService, $log, $http, cartDataService, $scope) {
 
     var vm = this;
     vm.defaulRecordImage = './assets/45_rpm_record.png';
@@ -44,6 +44,17 @@
       vm.selectedRecord = record;
     };
 
+    $scope.showPreview = function(input){
+      console.log("WE MADE IT!")
+      if( input.files && input.files[0] ){
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById("preview").setAttribute('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
     function uploadImage(user, record){
       var files = document.getElementById("file_input").files;
       var file = files[0];
@@ -72,18 +83,17 @@
       var xhr = new XMLHttpRequest();
       xhr.open("PUT", signed_request);
       xhr.setRequestHeader('x-amz-acl', 'public-read');
-      xhr.onload = function() {
-          if (xhr.status === 200) {
-              document.getElementById("preview").src = url;
-              document.getElementById("avatar_url").value = url;
-          }
-      };
       xhr.onerror = function() {
-          alert("Could not upload file.");
+        return alert("Could not upload file.");
       };
-      xhr.send(file)
-      alert("Succesfully Uploaded to S3");
-      saveUrlInUserImageArray(user, record, url);
+      xhr.onreadystatechange = function () {
+        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          console.log(xhr.responseText);
+          alert("Uploaded to S3 successfully!")
+          saveUrlInUserImageArray(user, record, url);
+        }
+      }
+      xhr.send()
     }
 
     function saveUrlInUserImageArray(user, record, url){
