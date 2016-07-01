@@ -23,7 +23,7 @@
       $log.debug("Logging in with credentials:", {email: auth.email, password: auth.password});
 
       return $http({
-        url:     "https://agile-lowlands-5230.herokuapp.com/api/token",
+        url:     "http://localhost:3000/api/token",
         method:  "POST",
         headers: {"Content-Type": "application/json"},
         data: angular.toJson({
@@ -50,5 +50,3 @@
   }
 
 })();
-
-
