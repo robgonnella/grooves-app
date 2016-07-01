@@ -1,5 +1,6 @@
 var mongoose = require('../config/database'),
-    User     = require('../models/user');
+    User     = require('../models/user'),
+    faker    = require('faker');
 
 var records = [
   {
