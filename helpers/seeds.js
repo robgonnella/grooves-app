@@ -1,5 +1,5 @@
-var mongoose = require('./config/database'),
-    User     = require('./models/user'),
+var mongoose = require('../config/database'),
+    User     = require('../models/user'),
     faker    = require('faker');
 
 var users = [];
