@@ -23,6 +23,7 @@
 
 
     function add (item) {
+      console.log("Item -->", item)
       cart.list.push(item);
       serialize();
     }
