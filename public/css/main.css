@@ -72,8 +72,8 @@ body {
 
 
 img {
-  max-height: 75px;
-  max-width: 75px;
+  height: 75px;
+  width: 75px;
 }
 
 .all-records {
@@ -148,4 +148,3 @@ img {
 #cart-view h1 {
   text-align: center;
 }
-
