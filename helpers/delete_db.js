@@ -4,4 +4,6 @@ var mongoose = require('../config/database'),
 User.remove({}, function(error) {
   if(error) console.log(error);
 
+  mongoose.disconnect();
+
 })
