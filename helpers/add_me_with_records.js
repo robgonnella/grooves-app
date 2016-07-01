@@ -77,7 +77,7 @@ var records = [
 ]
 
 var user = {
-  email:         "rob@rob.com"
+  email:         "rob@rob.com",
   password:      'abc123',
   likes:         0,
   records:       records
