@@ -8,7 +8,7 @@ var records = [
     genre:         '',
     year:          '1984',
     images:        [],
-    current_image: "./assets/ppr2.jpg"
+    current_image: "./assets/ppr2.jpg",
     label:         '',
     condition:     faker.lorem.sentence(),
     description:   "RIP",
@@ -20,7 +20,7 @@ var records = [
     genre:         '',
     year:          '1972',
     images:        [],
-    current_image: "./assets/miles.jpg"
+    current_image: "./assets/miles.jpg",
     label:         '',
     condition:     faker.lorem.sentence(),
     description:   "RIP",
@@ -32,7 +32,7 @@ var records = [
     genre:         '',
     year:          '1972',
     images:        [],
-    current_image: "./assets/zs.jpg"
+    current_image: "./assets/zs.jpg",
     label:         '',
     condition:     faker.lorem.sentence(),
     description:   "RIP",
@@ -44,7 +44,7 @@ var records = [
     genre:         '',
     year:          '1970',
     images:        [],
-    current_image: "./assets/jimi.jpg"
+    current_image: "./assets/jimi.jpg",
     label:         '',
     condition:     faker.lorem.sentence(),
     description:   "RIP",
@@ -56,7 +56,7 @@ var records = [
     genre:         '',
     year:          '1977',
     images:        [],
-    current_image: "./assets/glenfrey.jpg"
+    current_image: "./assets/glenfrey.jpg",
     label:         '',
     condition:     faker.lorem.sentence(),
     description:   "RIP",
@@ -68,7 +68,7 @@ var records = [
     genre:         '',
     year:          '1977',
     images:        [],
-    current_image: "./assets/mh.jpg"
+    current_image: "./assets/mh.jpg",
     label:         '',
     condition:     faker.lorem.sentence(),
     description:   "RIP",
