@@ -19,8 +19,8 @@ sleep 2
 echo "Saving Variables..."
 
 DELETE_DB_PATH="./helpers/delete_db.js"
-SEED_DB_PATH="./helpers/seeds.js"
 ADD_ME_PATH="./helpers/add_me_with_records.js"
+SEED_DB_PATH="./helpers/seeds.js"
 
 sleep 2
 
