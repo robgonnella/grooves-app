@@ -53,7 +53,9 @@ var show = function(req, res, next){
 var addRecord = function(req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if(error) res.json({message: 'Could not find user because ' + error});
-    req.body.record.current_image = images[Math.floor(Math.random() * (14 - 0)) + 0];
+    if (!req.body.record.current_image){
+      req.body.record.current_image = images[Math.floor(Math.random() * (14 - 0)) + 0];
+    }
     user.records.push(req.body.record);
     user.save(function (error, user) {
       if(error) res.json({message: 'Could not find user because ' + error});

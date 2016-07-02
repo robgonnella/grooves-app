@@ -10,6 +10,8 @@
   function MainController(userDataService, authService, $log, $http, cartDataService, $scope) {
 
     var vm = this;
+    vm.message = ""
+    vm.clearMessage = clearMessage;
     vm.defaulRecordImage = './assets/45_rpm_record.png';
     vm.user = userDataService;
     vm.getCurrentUser = getCurrentUser;
@@ -39,6 +41,9 @@
 
     getCurrentUser();
 
+    function clearMessage(){
+      vm.message = "";
+    }
 
     function selectRecord (record) {
       vm.selectedRecord = record;
@@ -192,6 +197,7 @@
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data,status,headers,config)
         vm.message = angular.toJson(data.data.message);
+        vm.showMessage = true;
       });
     };
 
@@ -208,12 +214,15 @@
         $log.debug("Success:", data)
         vm.auth.clear();
         vm.message = angular.toJson(data.data.message);
+        vm.showMessage = true;
       })
 
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data, status, headers, config)
 
         vm.message = angular.toJson(data.data.message);
+        vm.showMessage = true;
+
       });
     };
   }

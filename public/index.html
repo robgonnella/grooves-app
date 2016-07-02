@@ -37,6 +37,12 @@
     <input id="search2" class="form-control input-lg" ng-model="vm.search2" type="text" placeholder="search: year">
 
     <main class="container-fluid">
+
+      <div id="message" ng-show="vm.showMessage">
+        <p>{{vm.message}}</p>
+        <button type="submit" class="btn btn-primary" ng-click="vm.clearMessage()">Ok</button>
+      </div>
+
       <form id="user" ng-show="vm.signUp && !vm.login" ng-submit="vm.createUser()">
         <h4>Create User Below</h4>
         <fieldset class="pure-group center">
