@@ -21,7 +21,7 @@ var images = [
   "./assets/14.jpg"
 ];
 
-for (var i=1; i<=5; i++){
+for (var i=1; i<=25; i++){
   records = [];
   var user = {
     email:         faker.internet.email(),
