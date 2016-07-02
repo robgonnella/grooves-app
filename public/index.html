@@ -49,8 +49,8 @@
           <input type="email"           ng-model="vm.user.email" class="email" placeholder="user@domain.com">
           <input type="password"        ng-model="vm.user.password" class="password" placeholder="password"> <br><br>
           <a class="btn btn-danger" ng-click="vm.signUp = false; vm.message = ''">Cancel</a>
-          <button ng-hide="vm.message" type="submit" class="btn btn-primary">Submit</button>
-          <a ng-show="vm.message" ng-click="vm.login = true; vm.signUp=false" class="btn btn-primary">Continue to Login</a>
+          <button type="submit" class="btn btn-primary" ng-click="vm.signUp = false">Submit</button>
+          <!-- <a ng-show="vm.message" ng-click="vm.login = true; vm.signUp=false" class="btn btn-primary">Continue to Login</a> -->
         </fieldset>
       </form>
 

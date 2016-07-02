@@ -31,7 +31,7 @@ var create = function (req, res, next) {
   }).then(function(newUser) {
     res.json({
       success: true,
-      message: 'Successfully created user.',
+      message: 'Successfully created user. \nYou may now login!',
       data: {
         email: newUser.email,
         id:    newUser._id
