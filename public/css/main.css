@@ -136,14 +136,22 @@ body {
   background-color: rgba(255,255,255, .7);
   border-radius: 25px;
   margin: 15px auto;
-  max-width: 500px;
   padding: 25px;
+  max-width: 500px;
 }
 
-.add-form {
-  margin: 0 auto;
+.add-field {
   width: 15px;
 }
+
+/*.pure-group{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  height: 500px;
+  width: 250px;
+}*/
 
 #cart-view {
   text-align:left;

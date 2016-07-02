@@ -78,7 +78,7 @@
             <input ng-model="vm.selectedRecord.label" type="name" placeholder="Label">
         </div>
 
-        <div class="add-form">
+        <div class="add-field">
             <label for="exampleInputName2">Price</label>
             <input ng-model="vm.selectedRecord.price" type="name" placeholder="Price"><br>
         </div>
@@ -94,6 +94,7 @@
     </fieldset>
 </form>
 
+
 <div class="record-form" ng-show="vm.upload">
 
     <input type="file" id="file_input" ng-model="vm.preview" onchange="angular.element(this).scope().showPreview(this)"/>
@@ -107,6 +108,7 @@
 
     <a class="btn btn-danger" ng-click="vm.upload = false">Cancel</a>
 </div>
+
 
 <div class="user-records" ng-repeat="record in vm.currentUser.records | filter: vm.search1 | filter: vm.search2">
     <div class="single-record" ng-click="vm.selectRecord(record)">
