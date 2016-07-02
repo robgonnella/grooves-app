@@ -76,7 +76,7 @@ body {
   height: 150px;
 }
 
-.record-images {
+.record-images, #preview {
   height: 100px;
   min-width: 100px;
 }
@@ -133,25 +133,29 @@ body {
 }
 
 .record-form {
-  background-color: rgba(255,255,255, .7);
+  background-color: rgba(255,255,255, .8);
   border-radius: 25px;
   margin: 15px auto;
+  width: 500px;
+  height: 500px;
   padding: 25px;
-  max-width: 500px;
+}
+
+#upload-form{
+  height: 250px;
+}
+
+#add-record, #edit-record, #upload-form{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -250px;
 }
 
 .add-field {
   width: 15px;
 }
-
-/*.pure-group{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -250px;
-  height: 500px;
-  width: 250px;
-}*/
 
 #cart-view {
   text-align:left;
@@ -162,4 +166,13 @@ body {
 
 #cart-view h1 {
   text-align: center;
+}
+
+#preview{
+  display: block;
+  margin: 15px auto;
+
+}
+.upload, .cancel{
+  display: inline-block;
 }

@@ -9,31 +9,31 @@
 
     <fieldset class="pure-group center">
 
-          <div class="add-form">
+          <div class="add-field">
               <label for="exampleInputName2">Artist</label>
               <input ng-model="vm.newRecord.artist" placeholder="Artist">
           </div>
 
 
-          <div class="add-form">
+          <div class="add-field">
               <label for="exampleInputName2">Album</label>
               <input ng-model="vm.newRecord.album" placeholder="Album"> <br>
           </div>
 
 
-          <div class="add-form">
+          <div class="add-field">
               <label for="exampleInputName2">Year</label>
               <input ng-model="vm.newRecord.year" placeholder="Year">
           </div>
 
 
-          <div class="add-form">
+          <div class="add-field">
               <label for="exampleInputName2">Label</label>
               <input ng-model="vm.newRecord.label" placeholder="Label">
           </div>
 
 
-          <div class="add-form">
+          <div class="add-field">
               <label for="exampleInputName2">Price</label>
               <input ng-model="vm.newRecord.price" placeholder="Price"><br>
           </div>
@@ -55,25 +55,25 @@
 
     <fieldset class="pure-group center">
 
-        <div class="add-form">
+        <div class="add-field">
             <label for="exampleInputName2">Artist</label>
             <input ng-model="vm.selectedRecord.artist" type="name" placeholder="Artist">
         </div>
 
 
-        <div class="add-form">
+        <div class="add-field">
             <label for="exampleInputName2">Album</label>
             <input ng-model="vm.selectedRecord.album" type="name" placeholder="Album"> <br>
         </div>
 
 
-        <div class="add-form">
+        <div class="add-field">
             <label for="exampleInputName2">Year</label>
             <input ng-model="vm.selectedRecord.year" type="name" placeholder="Year">
         </div>
 
 
-        <div class="add-form">
+        <div class="add-field">
             <label for="exampleInputName2">Label</label>
             <input ng-model="vm.selectedRecord.label" type="name" placeholder="Label">
         </div>
@@ -95,18 +95,18 @@
 </form>
 
 
-<div class="record-form" ng-show="vm.upload">
+<div id="upload-form" class="record-form" ng-show="vm.upload">
 
     <input type="file" id="file_input" ng-model="vm.preview" onchange="angular.element(this).scope().showPreview(this)"/>
 
-    <img id="preview" src="./assets/45_rpm_record.png" />
+    <img id="preview" src="./assets/5.png" />
 
-    <form method="POST" ng-submit="vm.uploadImage(vm.currentUser, vm.selectedRecord)">
+    <form class="upload" method="POST" ng-submit="vm.uploadImage(vm.currentUser, vm.selectedRecord)">
         <input type="hidden" id="avatar_url" name="avatar_url" value="/public/default.png" />
         <input class="btn btn-primary" type="submit" value="Upload" />
     </form>
 
-    <a class="btn btn-danger" ng-click="vm.upload = false">Cancel</a>
+    <a class="btn btn-danger cancel" ng-click="vm.upload = false">Cancel</a>
 </div>
 
 
