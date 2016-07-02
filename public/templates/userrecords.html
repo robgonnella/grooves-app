@@ -2,88 +2,122 @@
 <br>
 <a class="btn btn-primary" ng-show="vm.auth.isLoggedIn" ng-click="vm.addForm = true">Add Record</a>
 <br>
+
 <form id="add-record" class="record-form" ng-show="vm.addForm" ng-submit="vm.addRecord()">
-  <h4>Enter Record Info Below</h4>
-  <fieldset class="pure-group center">
-    <div class="add-form">
-      <label for="exampleInputName2">Artist</label>
-      <input ng-model="vm.newRecord.artist" placeholder="Artist">
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Album</label>
-      <input ng-model="vm.newRecord.album" placeholder="Album"> <br>
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Year</label>
-      <input ng-model="vm.newRecord.year" placeholder="Year">
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Label</label>
-      <input ng-model="vm.newRecord.label" placeholder="Label">
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Price</label>
-      <input ng-model="vm.newRecord.price" placeholder="Price"><br>
-    </div class="add-form">
-    <label for="exampleInputName2">Description</label>
-    <textarea ng-model="vm.newRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
-    <br>
-    <a class="btn btn-danger" ng-click="vm.addForm = false">Cancel</a>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
+
+    <h4>Enter Record Info Below</h4>
+
+    <fieldset class="pure-group center">
+
+          <div class="add-form">
+              <label for="exampleInputName2">Artist</label>
+              <input ng-model="vm.newRecord.artist" placeholder="Artist">
+          </div>
+
+
+          <div class="add-form">
+              <label for="exampleInputName2">Album</label>
+              <input ng-model="vm.newRecord.album" placeholder="Album"> <br>
+          </div>
+
+
+          <div class="add-form">
+              <label for="exampleInputName2">Year</label>
+              <input ng-model="vm.newRecord.year" placeholder="Year">
+          </div>
+
+
+          <div class="add-form">
+              <label for="exampleInputName2">Label</label>
+              <input ng-model="vm.newRecord.label" placeholder="Label">
+          </div>
+
+
+          <div class="add-form">
+              <label for="exampleInputName2">Price</label>
+              <input ng-model="vm.newRecord.price" placeholder="Price"><br>
+          </div>
+
+
+          <label for="exampleInputName2">Description</label>
+          <textarea ng-model="vm.newRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
+
+          <br>
+
+          <a class="btn btn-danger" ng-click="vm.addForm = false">Cancel</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
 </form>
 
 <form id="edit-record" class="record-form" ng-show="vm.addFormEdit" ng-submit="vm.updateRecord(vm.selectedRecord)">
-  <h4>Enter Record Info Below</h4>
-  <fieldset class="pure-group center">
-    <div class="add-form">
-      <label for="exampleInputName2">Artist</label>
-      <input ng-model="vm.selectedRecord.artist" type="name" placeholder="Artist">
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Album</label>
-      <input ng-model="vm.selectedRecord.album" type="name" placeholder="Album"> <br>
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Year</label>
-      <input ng-model="vm.selectedRecord.year" type="name" placeholder="Year">
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Label</label>
-      <input ng-model="vm.selectedRecord.label" type="name" placeholder="Label">
-    </div>
-    <div class="add-form">
-      <label for="exampleInputName2">Price</label>
-      <input ng-model="vm.selectedRecord.price" type="name" placeholder="Price"><br>
-    </div class="add-form">
-    <label for="exampleInputName2">Description</label>
-      <textarea ng-model="vm.selectedRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
-    <br>
-    <a class="btn btn-danger" ng-click="vm.addFormEdit = false">Cancel</a>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
+
+    <h4>Enter Record Info Below</h4>
+
+    <fieldset class="pure-group center">
+
+        <div class="add-form">
+            <label for="exampleInputName2">Artist</label>
+            <input ng-model="vm.selectedRecord.artist" type="name" placeholder="Artist">
+        </div>
+
+
+        <div class="add-form">
+            <label for="exampleInputName2">Album</label>
+            <input ng-model="vm.selectedRecord.album" type="name" placeholder="Album"> <br>
+        </div>
+
+
+        <div class="add-form">
+            <label for="exampleInputName2">Year</label>
+            <input ng-model="vm.selectedRecord.year" type="name" placeholder="Year">
+        </div>
+
+
+        <div class="add-form">
+            <label for="exampleInputName2">Label</label>
+            <input ng-model="vm.selectedRecord.label" type="name" placeholder="Label">
+        </div>
+
+        <div class="add-form">
+            <label for="exampleInputName2">Price</label>
+            <input ng-model="vm.selectedRecord.price" type="name" placeholder="Price"><br>
+        </div>
+
+
+        <label for="exampleInputName2">Description</label>
+        <textarea ng-model="vm.selectedRecord.description" class="form-control" rows="3" placeholder="Text"></textarea>
+
+        <br>
+
+        <a class="btn btn-danger" ng-click="vm.addFormEdit = false">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
 </form>
 
 <div class="record-form" ng-show="vm.upload">
-  <input type="file" id="file_input" ng-model="vm.preview" onchange="angular.element(this).scope().showPreview(this)"/>
-  <img id="preview" src="./assets/45_rpm_record.png" />
-  <form method="POST" ng-submit="vm.uploadImage(vm.currentUser, vm.selectedRecord)">
-      <input type="hidden" id="avatar_url" name="avatar_url" value="/public/default.png" />
-      <input class="btn btn-primary" type="submit" value="Upload" />
-  </form>
-  <a class="btn btn-danger" ng-click="vm.upload = false">Cancel</a>
+
+    <input type="file" id="file_input" ng-model="vm.preview" onchange="angular.element(this).scope().showPreview(this)"/>
+
+    <img id="preview" src="./assets/45_rpm_record.png" />
+
+    <form method="POST" ng-submit="vm.uploadImage(vm.currentUser, vm.selectedRecord)">
+        <input type="hidden" id="avatar_url" name="avatar_url" value="/public/default.png" />
+        <input class="btn btn-primary" type="submit" value="Upload" />
+    </form>
+
+    <a class="btn btn-danger" ng-click="vm.upload = false">Cancel</a>
 </div>
 
 <div class="user-records" ng-repeat="record in vm.currentUser.records | filter: vm.search1 | filter: vm.search2">
-  <div class="single-record" ng-click="vm.selectRecord(record)">
-    <img class="record-images" ui-sref="record" ng-src="{{record.current_image || vm.defaulRecordImage}}">
-    <p ng-bind="record.artist"></p>
-    <p ng-bind="record.album || '-'"></p>
-    <p ng-bind="'$' + record.price"></p>
-    <p ng-bind="record.label" ng-hide="true"></p>
-    <a class="btn btn-default edit" ng-show="vm.auth.isLoggedIn" ng-click="vm.selectRecord(record); vm.addFormEdit = true">Edit</a>
-    <a class="btn btn-danger delete" ng-show="vm.auth.isLoggedIn" ng-click="vm.deleteRecord(record)">Delete</a>
-    <a class="btn btn-primary edit" ng-show="vm.auth.isLoggedIn" ng-click="vm.selectRecord(record); vm.upload = true">Upload Pic</a>
-  </div>
+    <div class="single-record" ng-click="vm.selectRecord(record)">
+        <img class="record-images" ui-sref="record" ng-src="{{record.current_image || vm.defaulRecordImage}}">
+        <p ng-bind="record.artist"></p>
+        <p ng-bind="record.album || '-'"></p>
+        <p ng-bind="'$' + record.price"></p>
+        <p ng-bind="record.label" ng-hide="true"></p>
+        <a class="btn btn-default edit" ng-show="vm.auth.isLoggedIn" ng-click="vm.selectRecord(record); vm.addFormEdit = true">Edit</a>
+        <a class="btn btn-danger delete" ng-show="vm.auth.isLoggedIn" ng-click="vm.deleteRecord(record)">Delete</a>
+        <a class="btn btn-primary edit" ng-show="vm.auth.isLoggedIn" ng-click="vm.selectRecord(record); vm.upload = true">Upload Pic</a>
+    </div>
 </div>
 <br>
