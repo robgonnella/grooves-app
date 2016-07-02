@@ -1,17 +1,30 @@
 <br>
 <div id="single-record-view">
-  <br>
-  <img id="record-image" ng-src="{{vm.selectedRecord.current_image || vm.defaulRecordImage}}">
-  <div id='record-info'>
-    <h2>{{vm.selectedRecord.artist}}</h2>
-    <h3>{{vm.selectedRecord.album}}</h3>
-    <h3>{{vm.selectedRecord.year}}</h3>
-    <h3>${{vm.selectedRecord.price}}</h3>
-  </div>
-  <h4>Label: {{vm.selectedRecord.label}}</h4>
-  <h4>Description: {{vm.selectedRecord.description}}</h4>
-  <br>
-  <div id="record-view-addcart">
-    <a class="btn btn-primary" ng-click="vm.addToCart(vm.selectedRecord)">Add to Cart</a>
-  </div>
+
+    <br>
+
+    <div id="record-page-image-and-info">
+        <div id="record-page-image-div">
+            <img id="record-image" ng-src="{{vm.selectedRecord.current_image || vm.defaulRecordImage}}">
+        </div>
+
+        <div id='record-info'>
+            <h2>{{vm.selectedRecord.artist}}</h2>
+            <h3>{{vm.selectedRecord.album}}</h3>
+            <h3>{{vm.selectedRecord.year}}</h3>
+            <h3>${{vm.selectedRecord.price}}</h3>
+        </div>
+        
+        <div id="record-page-label-and-desc">
+            <h4>Label: {{vm.selectedRecord.label}}</h4>
+            <h4>Description: {{vm.selectedRecord.description}}</h4>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="record-view-addcart">
+        <a class="btn btn-primary" ng-click="vm.addToCart(vm.selectedRecord)">Add to Cart</a>
+    </div>
+
 </div>
