@@ -1,5 +1,21 @@
 // Require resource's model(s).
 var User = require("../models/user");
+var images = [
+  "./assets/1.png",
+  "./assets/2.png",
+  "./assets/3.png",
+  "./assets/4.png",
+  "./assets/5.png",
+  "./assets/6.png",
+  "./assets/7.png",
+  "./assets/8.jpg",
+  "./assets/9.jpg",
+  "./assets/10.png",
+  "./assets/11.png",
+  "./assets/12.jpg",
+  "./assets/13.jpg",
+  "./assets/14.jpg"
+];
 
 var index = function(req, res, next){
   User.find({}, function(error, users){
@@ -37,6 +53,7 @@ var show = function(req, res, next){
 var addRecord = function(req, res, next) {
   User.findById(req.params.id, function(error, user) {
     if(error) res.json({message: 'Could not find user because ' + error});
+    req.body.record.current_image = images[Math.floor(Math.random() * (14 - 0)) + 0];
     user.records.push(req.body.record);
     user.save(function (error, user) {
       if(error) res.json({message: 'Could not find user because ' + error});
