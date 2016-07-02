@@ -30,10 +30,10 @@ sleep 1
 
 echo "Deleting DB"
 heroku run node $DELETE_DB_PATH
-echo "RE-SEEDING DB"
-heroku run node $SEED_DB_PATH
 echo "Adding Rob"
 heroku run node $ADD_ME_PATH
+echo "RE-SEEDING DB"
+heroku run node $SEED_DB_PATH
 
 echo "Changing back to current working directory"
 
