@@ -197,7 +197,6 @@
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data,status,headers,config)
         vm.message = angular.toJson(data.data.message);
-        vm.showMessage = true;
       });
     };
 
@@ -214,14 +213,12 @@
         $log.debug("Success:", data)
         vm.auth.clear();
         vm.message = angular.toJson(data.data.message);
-        vm.showMessage = true;
       })
 
       .catch(function(data, status, headers, config) {
         $log.debug("Failure:", data, status, headers, config)
 
         vm.message = angular.toJson(data.data.message);
-        vm.showMessage = true;
 
       });
     };
