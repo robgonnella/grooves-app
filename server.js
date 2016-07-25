@@ -10,11 +10,10 @@ require('dotenv').load();
 
 // Load local libraries.
 var env      = require('./config/environment');
-    // mongoose = require('./config/database');
+    mongoose = require('./config/database');
 
 // Instantiate a server application.
 var app = express();
-
 
 // Configure the application (and set it's title!).
 app.set('title', env.TITLE);

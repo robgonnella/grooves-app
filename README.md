@@ -33,8 +33,6 @@ A connection through the Discogs API will also give access to brand new records 
 * Paypal function not fully implemented as I would need a business account with Paypal to fully integrate a system where a single payment can be dispersed to mutiple paypal accounts.
 * Discogs API not implemented yet
 * Filter needs to be applied to Artist and Album title lengths to keep the look clean and consistent
-* Image Uploaded not implemented yet
-* Error messages to user for unauthorized actions needs to be displayed 
 * When added to cart, slower fade-out of record instead of disappearing instantly
 * After signing up go straight to seller's account page
 

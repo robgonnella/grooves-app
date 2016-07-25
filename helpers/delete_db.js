@@ -6,4 +6,4 @@ User.remove({}, function(error) {
 
   mongoose.disconnect();
 
-})
+});
