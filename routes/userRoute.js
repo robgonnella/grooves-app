@@ -6,8 +6,7 @@ var aws = require('aws-sdk');
 var AWS_ACCESS_KEY=process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY=process.env.AWS_SECRET_KEY;
 var S3_BUCKET=process.env.S3_BUCKET;
-// In order to simplify our process, we will handle the request
-// inline here, instead of passing to controller files.
+
 module.exports = function(app, errorHandler) {
 
   app.get('/api/users', usersController.index);
@@ -17,7 +16,8 @@ module.exports = function(app, errorHandler) {
   app.put('/api/users/:id/records/:record_id', usersController.updateRecord);
   app.delete('/api/users/:id/records/:record_id', usersController.destroyRecord);
 
-
+  // In order to simplify our process, we will handle the request
+  // inline here, instead of passing to controller files.
   app.get('/sign_s3', function(req, res){
       aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
       var s3 = new aws.S3();

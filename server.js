@@ -9,8 +9,8 @@ var locus        = require('locus');
 require('dotenv').load();
 
 // Load local libraries.
-var env      = require('./config/environment'),
-    mongoose = require('./config/database');
+var env      = require('./config/environment');
+    // mongoose = require('./config/database');
 
 // Instantiate a server application.
 var app = express();

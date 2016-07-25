@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var http  = require('http'),
-    debug = require('debug')('app:http');
+    debug = require('debug')('http');
 
 var env = require('../config/environment'),
     app = require('../server');
